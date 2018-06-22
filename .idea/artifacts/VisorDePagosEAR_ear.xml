@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="VisorDePagosEAR:ear">
+    <output-path>$PROJECT_DIR$/VisorDePagosEAR/target</output-path>
+    <root id="archive" name="VisorDePagosEAR-2.0.ear">
+      <element id="artifact" artifact-name="VisorDePagosEAR:ear exploded" />
+    </root>
+  </artifact>
+</component>

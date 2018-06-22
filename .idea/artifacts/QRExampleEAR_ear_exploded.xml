@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="QRExampleEAR:ear exploded">
+    <output-path>$PROJECT_DIR$/QRExampleEAR/target/QRExampleEAR-1.0</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="QRExampleEAR/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/QRExampleEAR/target/QRExampleEAR-1.0/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="dir-copy" path="src/main/java" />
+      <element id="archive" name="QRExampleWeb-1.0.war">
+        <element id="artifact" artifact-name="QRExampleWeb:war exploded" />
+      </element>
+      <element id="archive" name="QRExampleBusiness-1.0.jar">
+        <element id="artifact" artifact-name="QRExampleBusiness:ejb exploded" />
+      </element>
+      <element id="library" level="project" name="Maven: net.bull.javamelody:javamelody-core:1.60.0" />
+      <element id="library" level="project" name="Maven: org.jrobin:jrobin:1.5.9" />
+      <element id="library" level="project" name="Maven: org.apache.axis:axis:1.4" />
+      <element id="library" level="project" name="Maven: commons-discovery:commons-discovery:0.2" />
+      <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.0.4" />
+      <element id="library" level="project" name="Maven: javax.xml:jaxrpc-api:1.1" />
+      <element id="library" level="project" name="Maven: axis:axis-saaj:1.2" />
+      <element id="library" level="project" name="Maven: wsdl4j:wsdl4j:1.5.1" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.21" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
+      <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+    </root>
+  </artifact>
+</component>

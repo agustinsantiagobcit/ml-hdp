@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="BotonDePagoIntranetBusiness:ejb">
+    <output-path>$PROJECT_DIR$/BotonDePagoIntranetBusiness/target</output-path>
+    <root id="archive" name="BotonDePagoIntranetBusiness-1.0.jar">
+      <element id="artifact" artifact-name="BotonDePagoIntranetBusiness:ejb exploded" />
+    </root>
+  </artifact>
+</component>

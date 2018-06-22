@@ -1,0 +1,171 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="content">
+
+        <style type="text/css">
+            .ui-selectonemenu {
+                min-width: 139px !important;
+            }
+        </style>
+
+        <h:form id="form" prependId="false">
+            <div class="Container100">
+                <div class="ContainerIndent">
+                    <div class="Card ShadowEffect  ">
+                        <div class="Container100 Responsive100">
+                            <div class="ContainerIndent">
+                                <h2 class="BigTopic">Búsqueda de Pagos Conciliados</h2>
+
+                                <div class="payments-search-leftblock">
+                                    <div class="input-form">
+                                        <h:outputLabel value="Fecha de pago (desde)"/>
+                                        <p:calendar id="fecha_desde" value="#{pagosConciliadosBean.fechaDesde}" pattern="dd/MM/yyyy" style="float:left;clear:both;min-width:170px"/>
+                                    </div>
+
+                                    <div class="input-form">
+                                        <h:outputLabel value="Fecha de pago (hasta)"/>
+                                        <p:calendar id="fecha_hasta" value="#{pagosConciliadosBean.fechaHasta}" pattern="dd/MM/yyyy" style="float:left;clear:both;min-width:170px"/>
+                                    </div>
+
+                                    <div class="input-form">
+                                        <h:outputLabel value="Periodo Mes"/>
+                                        <p:selectOneMenu value="#{pagosConciliadosBean.periodoMes}" style="float:left;clear:both;min-width:138px !important;">
+                                            <f:selectItem itemLabel="Todos" itemValue="all" />
+                                            <f:selectItem itemValue="1" itemLabel="Enero"  />
+                                            <f:selectItem itemValue="2" itemLabel="Febrero"  />
+                                            <f:selectItem itemValue="3" itemLabel="Marzo"  />
+                                            <f:selectItem itemValue="4" itemLabel="Abril"  />
+                                            <f:selectItem itemValue="5" itemLabel="Mayo"  />
+                                            <f:selectItem itemValue="6" itemLabel="Junio"  />
+                                            <f:selectItem itemValue="7" itemLabel="Julio"  />
+                                            <f:selectItem itemValue="8" itemLabel="Agosto"  />
+                                            <f:selectItem itemValue="9" itemLabel="Septiembre"  />
+                                            <f:selectItem itemValue="10" itemLabel="Octubre"  />
+                                            <f:selectItem itemValue="11" itemLabel="Noviembre"  />
+                                            <f:selectItem itemValue="12" itemLabel="Diciembre"  />
+                                        </p:selectOneMenu>
+                                    </div>
+
+                                    <div class="input-form">
+                                        <h:outputLabel value="Periodo Año"/>
+                                        <p:inputText id="periodo_ano" value="#{pagosConciliadosBean.periodoAnio}" style="float:left;clear:both;min-width:170px"/>
+                                    </div>
+
+                                    <div class="input-form">
+                                        <h:outputLabel value="Línea de negocio"/>
+                                        <p:selectOneMenu value="#{pagosConciliadosBean.lineaNegocio}" style="float:left;clear:both">
+                                            <f:selectItems value="#{pagosConciliadosBean.allLineasDeNegocio}" var="line" itemLabel="#{line.name}" itemValue="#{line.name}" />
+                                        </p:selectOneMenu>
+                                    </div>
+
+                                    <div class="input-form">
+                                        <h:outputLabel value="Institución de pago"/>
+                                        <p:selectOneMenu value="#{pagosConciliadosBean.institucionPago}" style="float:left;clear:both">
+                                            <f:selectItem itemLabel="Todas" itemValue="all"/>
+                                            <f:selectItems value="#{pagosConciliadosBean.allInstitucionesDePago}" var="inst" itemLabel="#{inst.name}" itemValue="#{inst.name}" />
+                                        </p:selectOneMenu>
+                                    </div>
+
+                                    <div class="input-form">
+                                        <h:outputLabel value="Estado de conciliación"/>
+                                        <p:selectOneMenu value="#{pagosConciliadosBean.estadoConciliacion}" style="float:left;clear:both">
+                                            <f:selectItem itemLabel="Todas" itemValue="all"/>
+                                            <f:selectItems value="#{pagosConciliadosBean.allEstados}" var="estado" itemLabel="#{estado}" itemValue="#{estado}" />
+                                        </p:selectOneMenu>
+                                    </div>
+
+                                </div>
+
+                                <div class="payments-search-rightblock">
+                                    <div class="input-form" style="width:100px !important;margin-top: 23px;margin-bottom: 11px;">
+                                        <p:commandButton action="#{pagosConciliadosBean.search}" value="Buscar" update="form" styleClass="GreenButton Wid90"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Container100">
+                <div class="ContainerIndent">
+                    <div class="Card ShadowEffect TexAlCenter">
+
+                            <p:growl id="growl" life="4000" showDetail="true" />
+
+                            <p:dataTable id="informacionDT" var="data" widgetVar="informacionDTVar" rows="50" rowsPerPageTemplate="50,100,150"
+                                         value="#{pagosConciliadosBean.lista}" emptyMessage="No hay datos disponibles" paginator="true"
+                                         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                                         paginatorPosition="bottom" scrollable="true" resizableColumns="true" style="text-align:left">
+
+                                <f:facet name="{Exporters}">
+                                    <h:outputLabel value="Exportar a :" style="margin-left: 100px;"/>
+                                    <h:commandLink>
+                                        <img src="#{request.contextPath}/resources/rio-layout/images/xls.png" width="24" style="margin-bottom: -8px;"/>
+                                        <p:dataExporter type="xls" target="informacionDT" fileName="pagos" />
+                                    </h:commandLink>
+
+                                    <h:commandLink>
+                                        <img src="#{request.contextPath}/resources/rio-layout/images/csv.png" width="24" style="margin-bottom: -8px;"/>
+                                        <p:dataExporter type="csv" target="informacionDT" fileName="pagos" />
+                                    </h:commandLink>
+                                </f:facet>
+
+                                <p:column headerText="Archivo de Conciliación">
+                                    <h:outputLabel value="#{data.conciliationFile.fileName}"/>
+                                </p:column>
+
+                                <p:column headerText="Fecha de Pago">
+                                    <h:outputLabel value="#{data.formattedDate}"/>
+                                </p:column>
+
+                                <p:column headerText="Número de Documento" sortBy="#{data.documentNumber}" >
+                                    <h:outputLabel value="#{data.documentNumber}"/>
+                                </p:column>
+
+                                <p:column headerText="Línea de Negocio">
+                                    <h:outputLabel id="linea" value="#{data.businessLine.name}"/>
+
+                                    <p:tooltip id="toolTipFade" for="linea" value="Número convenio: #{data.paymentInstitution.idCupon}" position="top"/>
+                                </p:column>
+
+                                <p:column headerText="Mes" sortBy="#{data.periodMonthName}" >
+                                    <h:outputLabel value="#{data.periodMonthName}"/>
+                                </p:column>
+
+                                <p:column headerText="Año" sortBy="#{data.periodYear}" >
+                                    <h:outputLabel value="#{data.periodYear}"/>
+                                </p:column>
+
+                                <p:column headerText="Divisa">
+                                    <h:outputLabel value="#{data.currencyCode.code}"/>
+                                </p:column>
+
+                                <p:column headerText="Monto Pagado">
+                                    <h:outputLabel value="#{data.formattedPaidAmount}"/>
+                                </p:column>
+
+                                <p:column headerText="Estado">
+                                    <h:outputLabel value="#{data.status.name}"/>
+                                </p:column>
+
+                                <p:column headerText="Descripcion">
+                                    <h:outputLabel value="#{data.status.description}"/>
+                                </p:column>
+
+                            </p:dataTable>
+                        <br/><br/>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

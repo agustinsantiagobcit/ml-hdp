@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="BotonDePagoEAR:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/BotonDePagoEAR_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="BotonDePagoIntranetEAR/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

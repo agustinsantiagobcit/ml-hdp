@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="BotonDePagoDmzEAR:ear">
+    <output-path>$PROJECT_DIR$/BotonDePagoDmzEAR/target</output-path>
+    <root id="archive" name="BotonDePagoDmzEAR-1.0.ear">
+      <element id="artifact" artifact-name="BotonDePagoDmzEAR:ear exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="VisorDePagosBusiness:ejb exploded">
+    <output-path>$PROJECT_DIR$/VisorDePagosBusiness/target/VisorDePagosBusiness-1.0</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="VisorDePagosBusiness/ejb/EJB" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/VisorDePagosBusiness/target/VisorDePagosBusiness-1.0/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="VisorDePagosBusiness" />
+    </root>
+  </artifact>
+</component>

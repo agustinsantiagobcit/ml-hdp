@@ -1,0 +1,71 @@
+Esta corresponde a la p�gina que incorpora la funcionalidad para recibir 
+el mensaje de notificaci�n MPOUT y actualizar el pago en las bases de datos
+del comercio.
+Esta p�gina debe responder escribiendo <NOTIFICA>OK</NOTIFICA> en caso de exito
+y <NOTIFICA>NOK</NOTIFICA> en caso de cualquier error.
+Est� p�gina puede ser desarrollada en php, asp, java o cualquier lenguaje.
+
+XML MPOUT:
+
+<MPOUT>
+   <CODRET></CODRET>       C�digo de retorno (C4)
+   <DESCRET></DESCRET>     Descripci�n de retorno (C59)
+   <IDCOM></IDCOM>         ID Contrato (N10)
+   <IDTRX></IDTRX>         ID Transacci�n del Comercio (C16)
+   <TOTAL></TOTAL>         Monto total de la Trx (N11)
+   <NROPAGOS></NROPAGOS>   N�mero de pagos en detalle (N2)
+   <FECHATRX></FECHATRX>   Fecha de la transacci�n (N14)
+   <FECHACONT></FECHACONT> Fecha Contable AAAAMMDD (N8)
+   <NUMCOMP></NUMCOMP>     N�mero de Comprobante del Banco (N20)
+   <IDREG></IDREG>         ID de registro para consulta de resultado.
+</MPOUT>
+
+EJEMPLO DE ESTRUCTURA DE CODIGO 
+
+REM*************************************************************************
+REM Pagina:		NOTIFICACION.ASP
+REM Objetivo:	Permite actualizar la base de nominas desde medio de pago. 
+REM Descrip:	* Recupera y parsea el xml
+REM*************************************************************************
+
+response.ContentType = "text/plain"
+'Crea el Dom XML
+Set objXML = Server.CreateObject("Microsoft.XMLDOM")
+'carga el XML
+objXML.loadXml(Request.ServerVariables("QUERY_STRING"))
+'Parsea el xml
+if (objXML.parseError.errorCode <> 0) then
+   ' aqui existe un error de parseo
+   response.write "Error en XML de notificacion: " & objXML.parseError.errorCode
+   response.end
+end if  
+'Busca todos los elemento con ala etiqueta MPOUT
+set Element=objXML.getElementsByTagName("MPOUT")
+'Busco la etiqueta CODRET
+Codret=Element.item(0).selectNodes("CODRET").ITEM(0).text
+
+if Codret<>"0000" then
+   'ocurrio un error en el banco y no hubo pago
+else
+
+    'Busca todos los tags necesarios para la actualizaci�n del estado en la base
+     DescRet=Element.item(0).selectNodes("DESCRET").ITEM(0).text
+     IdeTrx=Element.item(0).selectNodes("IDTRX").ITEM(0).text
+     IdeCom=Element.item(0).selectNodes("IDCOM").ITEM(0).text
+     Total=Element.item(0).selectNodes("TOTAL").ITEM(0).text
+     NroPagos=Element.item(0).selectNodes("NROPAGOS").ITEM(0).text
+     NumComprobante=Element.item(0).selectNodes("NUMCOMP").ITEM(0).text
+     FechaTRX=Element.item(0).selectNodes("FECHATRX").ITEM(0).text
+     FechaCONT=Element.item(0).selectNodes("FECHACONT").ITEM(0).text
+
+	'Codigo de actualici�n a la base de datos 
+	'aqui va el codigo de conexion a  base de datos y actualizacion
+
+	   
+end if
+
+'Anulo el cl.metlife.hdp.botonpago.kitservipag.objeto
+set objXML=nothing
+
+response.write "<NOTIFICA>OK</NOTIFICA>"
+%>

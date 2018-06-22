@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="BECSRefactorEAR" />
+        <module name="BECSRefactorWeb" />
+        <module name="BotonDePagoDmzEAR" />
+        <module name="BotonDePagoDmzWeb" />
+        <module name="BotonDePagoIntranetBusiness" />
+        <module name="BotonDePagoIntranetDomain" />
+        <module name="BotonDePagoIntranetEAR" />
+        <module name="BotonDePagoIntranetWeb" />
+        <module name="HubDePagosAdminBusiness" />
+        <module name="HubDePagosAdminBussiness" />
+        <module name="HubDePagosAdminEAR" />
+        <module name="HubDePagosAdminWeb" />
+        <module name="HubDePagosBackendEAR" />
+        <module name="HubDePagosBussiness" />
+        <module name="HubDePagosDomain" />
+        <module name="HubDePagosPersistence" />
+        <module name="QRExampleBusiness" />
+        <module name="QRExampleEAR" />
+        <module name="QRExampleWeb" />
+        <module name="VisorDePagosBusiness" />
+        <module name="VisorDePagosEAR" />
+        <module name="VisorDePagosWeb" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BECSRefactorEAR" target="1.6" />
+      <module name="BECSRefactorWeb" target="1.6" />
+      <module name="BotonDePagoDmzEAR" target="1.6" />
+      <module name="BotonDePagoDmzWeb" target="1.6" />
+      <module name="BotonDePagoIntranetBusiness" target="1.6" />
+      <module name="BotonDePagoIntranetDomain" target="1.6" />
+      <module name="BotonDePagoIntranetEAR" target="1.6" />
+      <module name="BotonDePagoIntranetPersistence" target="1.6" />
+      <module name="BotonDePagoIntranetWeb" target="1.6" />
+      <module name="HubDePagos" target="1.6" />
+      <module name="HubDePagosAdminBusiness" target="1.6" />
+      <module name="HubDePagosAdminBussiness" target="1.6" />
+      <module name="HubDePagosAdminEAR" target="1.6" />
+      <module name="HubDePagosAdminWeb" target="1.6" />
+      <module name="HubDePagosBackendEAR" target="1.6" />
+      <module name="HubDePagosBussiness" target="1.6" />
+      <module name="HubDePagosDomain" target="1.6" />
+      <module name="HubDePagosPersistence" target="1.6" />
+      <module name="QRExampleBusiness" target="1.6" />
+      <module name="QRExampleEAR" target="1.6" />
+      <module name="QRExampleWeb" target="1.6" />
+      <module name="VisorDePagosBusiness" target="1.6" />
+      <module name="VisorDePagosDomain" target="1.6" />
+      <module name="VisorDePagosEAR" target="1.6" />
+      <module name="VisorDePagosPersistence" target="1.6" />
+      <module name="VisorDePagosWeb" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

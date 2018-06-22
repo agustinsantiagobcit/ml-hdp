@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BotonDePagoDmzWeb:war">
+    <output-path>$PROJECT_DIR$/BotonDePagoDmzWeb/target</output-path>
+    <root id="archive" name="BotonDePagoDmzWeb.war">
+      <element id="artifact" artifact-name="BotonDePagoDmzWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

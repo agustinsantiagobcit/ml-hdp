@@ -1,0 +1,97 @@
+.input-form {
+    width: 230px;
+    float: left;
+    margin-top: 20px;
+}
+
+.input-form label {
+    float:left;
+}
+
+.payments-search-leftblock {
+    width: 86%;
+    float:left;
+    margin-top: -30px;
+}
+
+.payments-search-rightblock {
+    width: 10%;
+    float:left;
+}
+
+.hasDatepicker {
+    width: 175px !important;
+}
+
+.ui-datatable-resizable thead th, .ui-datatable-resizable tbody td, .ui-datatable-resizable tfoot td {
+    white-space: normal !important;
+}
+
+@media (min-width: 1100px) and (max-width: 1300px) {
+    .ui-panelgrid-cell {
+
+    }
+}
+
+@media (min-width: 0px) and (max-width: 650px) {
+    .input-form {
+        width: 100% !important;
+        float: left;
+    }
+
+    .payments-search-leftblock {
+        width:100% !important;
+    }
+
+    .ui-selectonemenu {
+        min-width: 87% !important;
+    }
+
+    .input { width: 96% !important}
+
+}
+
+#calendar_button1_input {
+    width: 283px !important;
+}
+
+#calendar_button2_input {
+    width: 283px !important;
+}
+
+#pieChart > #piaChart svg g:first-child {
+    display:none;
+}
+
+.ui-dialog-titlebar {
+    background-color: #0061a0 !important;
+    color: #fff !important;
+}
+
+#charts {
+    width: 71% !important;
+    float: right !important;
+    margin-top: -295px !important;
+}
+
+#pieChart {
+    margin-top: -140px !important;
+}
+
+.payments_HoraEstadoCalendar input {
+    width: 100px !important;
+    font-size: 12px !important;
+}
+
+.payments_EstadoSelect label {
+    font-size: 12px !important;
+}
+
+.payments_IDBotonPagoFilerInput input {
+    width: 45px !important;
+    font-size: 12px !important;
+}
+
+.payments_LineaNegocioFilterInput label{
+    font-size: 12px !important;
+}

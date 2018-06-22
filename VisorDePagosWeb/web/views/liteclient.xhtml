@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="content">
+        <div class="Container100">
+            <div class="ContainerIndent">
+                <div class="Card ShadowEffect">
+                    <br/>
+                    <h2>Cliente Ligero</h2>
+                    <br/>
+
+                    <h:form id="form" prependId="false">
+
+                        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+                        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                                       <p>Cargando...</p>
+                        </p:dialog>
+
+
+                        <p:fragment id="main">
+
+                            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Seleccione Datasource" for="datasourceslist" />
+                                <p:selectOneMenu id="datasourceslist" value="#{liteClientBean.selectedDatasource}" >
+                                    <f:selectItems value="#{liteClientBean.dataSourceNames}" />
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="Consulta" for="querytext" />
+                                <p:inputTextarea id="querytext" value="#{liteClientBean.query}" cols="100" extractedRows="12" />
+
+                                <p:outputLabel value=" " />
+                                <p:commandButton action="#{liteClientBean.callQuery}" value="Ejecutar" update="main" />
+                            </p:panelGrid>
+
+
+                            <p:dataTable rendered="#{liteClientBean.validQuery}"
+                                         rows="50" paginator="true" id="results" var="row"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                                         rowsPerPageTemplate="10,20,50,100"
+                                         value="#{liteClientBean.resultRows}" style="margin-top: 20px" resizableColumns="true"  >
+                                  <f:facet name="{Exporters}">
+                                    <h:commandLink>
+                                        <p:graphicImage library="blueprints" name="images/exporter/excel.png" width="24"/>
+                                        <p:dataExporter type="xls" target="results" fileName="results" />
+                                    </h:commandLink>
+
+                                    <h:commandLink>
+                                        <p:graphicImage library="blueprints" name="images/exporter/pdf.png" width="24"/>
+                                        <p:dataExporter type="pdf" target="results" fileName="results"/>
+                                    </h:commandLink>
+
+                                    <h:commandLink>
+                                        <p:graphicImage library="blueprints" name="images/exporter/csv.png" width="24"/>
+                                        <p:dataExporter type="csv" target="results" fileName="results" />
+                                    </h:commandLink>
+
+                                    <h:commandLink>
+                                        <p:graphicImage library="blueprints" name="images/exporter/xml.png" width="24"/>
+                                        <p:dataExporter type="xml" target="results" fileName="results" />
+                                    </h:commandLink>
+                                </f:facet>
+                                <p:columns var="columnName" columnIndexVar="columnIndex" value="#{liteClientBean.columnNames}" sortable="true" sortBy="#{row[columnIndex]}">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{columnName}" />
+                                    </f:facet>
+                                    <h:outputText value="#{row[columnIndex]}" />
+                                </p:columns>
+                            </p:dataTable>
+
+                            <p:dataTable id="historial" value="#{liteClientBean.historial}" var="query">
+                                <p:column headerText="SQL">
+                                    <h:outputText value="#{query}" />
+                                </p:column>
+                            </p:dataTable>
+
+
+                        </p:fragment>
+
+                    </h:form>
+
+                    <br/><br/>
+                </div>
+            </div>
+        </div>
+        
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="ejb" url="file://$PROJECT_DIR$/BotonDePagoIntranetBusiness" />
+    <file type="ejb" url="file://$PROJECT_DIR$/BotonDePagoIntranetPersistence" />
+    <file type="ejb" url="file://$PROJECT_DIR$/HubDePagosAdminBusiness" />
+    <file type="ejb" url="file://$PROJECT_DIR$/HubDePagosBussiness" />
+    <file type="ejb" url="file://$PROJECT_DIR$/HubDePagosPersistence" />
+    <file type="ejb" url="file://$PROJECT_DIR$/QRExampleBusiness" />
+    <file type="ejb" url="file://$PROJECT_DIR$/VisorDePagosBusiness" />
+    <file type="ejb" url="file://$PROJECT_DIR$/VisorDePagosPersistence" />
+    <file type="javaeeApplication" url="file://$PROJECT_DIR$/BECSRefactorEAR" />
+    <file type="javaeeApplication" url="file://$PROJECT_DIR$/BotonDePagoDmzEAR" />
+    <file type="javaeeApplication" url="file://$PROJECT_DIR$/BotonDePagoIntranetEAR" />
+    <file type="javaeeApplication" url="file://$PROJECT_DIR$/HubDePagosAdminEAR" />
+    <file type="javaeeApplication" url="file://$PROJECT_DIR$/QRExampleEAR" />
+    <file type="javaeeApplication" url="file://$PROJECT_DIR$/VisorDePagosEAR" />
+    <file type="web" url="file://$PROJECT_DIR$/BECSRefactorWeb" />
+    <file type="web" url="file://$PROJECT_DIR$/BotonDePagoDmzWeb" />
+    <file type="web" url="file://$PROJECT_DIR$/BotonDePagoIntranetWeb" />
+    <file type="web" url="file://$PROJECT_DIR$/HubDePagosAdminWeb" />
+    <file type="web" url="file://$PROJECT_DIR$/QRExampleWeb" />
+    <file type="web" url="file://$PROJECT_DIR$/VisorDePagosWeb" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/HubDePagosBackendEAR/pom.xml" />
+        <option value="$PROJECT_DIR$/HubDePagosBussiness/pom.xml" />
+        <option value="$PROJECT_DIR$/HubDePagosDomain/pom.xml" />
+        <option value="$PROJECT_DIR$/HubDePagosPersistence/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/VisorDePagosDomain/pom.xml" />
+        <option value="$PROJECT_DIR$/VisorDePagosPersistence/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="false" project-jdk-name="1.6" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="WebServicesPlugin" addRequiredLibraries="true" />
+</project>

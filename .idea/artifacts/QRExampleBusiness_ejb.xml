@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="QRExampleBusiness:ejb">
+    <output-path>$PROJECT_DIR$/QRExampleBusiness/target</output-path>
+    <root id="archive" name="QRExampleBusiness-1.0.jar">
+      <element id="artifact" artifact-name="QRExampleBusiness:ejb exploded" />
+    </root>
+  </artifact>
+</component>

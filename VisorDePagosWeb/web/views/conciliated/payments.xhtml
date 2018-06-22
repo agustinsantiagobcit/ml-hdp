@@ -1,0 +1,310 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="content">
+
+        <h:form id="form" prependId="false">
+
+            <div class="Container100">
+                <div class="ContainerIndent">
+                    <div class="Card ShadowEffect  ">
+                        <div class="Container100 Responsive100">
+                            <div class="ContainerIndent">
+                                <h2 class="BigTopic">Buscador de pagos conciliados</h2>
+
+                                <div class="payments-search-leftblock">
+                                    <div class="input-form">
+                                        <h:outputLabel value="Linea de negocio"/>
+                                        <p:selectOneMenu value="#{conciliatedPaymentsBean.businessLine}" style="float:left;clear:both">
+                                            <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" noSelectionOption="true" />
+                                            <f:selectItems value="#{authenticationBean.userBotonLineasNegocio}" var="line" itemLabel="#{line.nombre}" itemValue="#{line.nombre}" />
+                                        </p:selectOneMenu>
+                                    </div>
+
+                                    <div class="input-form">
+                                        <h:outputLabel value="Fecha Desde"/>
+                                        <p:calendar value="#{conciliatedPaymentsBean.fechaDesde}" style="float:left;clear:both;min-width:170px" pattern="dd/MM/yyyy"/>
+                                    </div>
+
+                                    <div class="input-form">
+                                        <h:outputLabel value="Fecha Hasta"/>
+                                        <p:calendar value="#{conciliatedPaymentsBean.fechaHasta}" style="float:left;clear:both;min-width:170px" pattern="dd/MM/yyyy"/>
+                                    </div>
+                                </div>
+
+                                <div class="payments-search-rightblock">
+                                    <div class="input-form" style="width:100px !important;margin-top: 23px;margin-bottom: 11px;">
+                                        <p:commandButton action="#{conciliatedPaymentsBean.search}" value="Buscar" process="@all" update="form" styleClass="GreenButton Wid90"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Container100">
+                <div class="ContainerIndent">
+                    <div class="Card ShadowEffect TexAlCenter">
+
+                            <p:growl id="growl" life="4000" showDetail="true" />
+
+                            <p:dataTable id="informacionDT" var="data" widgetVar="informacionDTVar" rows="50" rowsPerPageTemplate="50,100,150"
+                                         value="#{conciliatedPaymentsBean.botonBoletas}" emptyMessage="No hay datos disponibles" paginator="true"
+                                         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                                         paginatorPosition="bottom" scrollable="true" resizableColumns="true" style="text-align:left">
+
+                                <f:facet name="{Exporters}">
+                                    <h:outputLabel value="Exportar a :" style="margin-left: 100px;"/>
+                                    <h:commandLink>
+                                        <img src="#{request.contextPath}/resources/rio-layout/images/xls.png" width="24" style="margin-bottom: -8px;"/>
+                                        <p:dataExporter type="xls" target="informacionDT" fileName="pagos" />
+                                    </h:commandLink>
+
+                                    <h:commandLink>
+                                        <img src="#{request.contextPath}/resources/rio-layout/images/csv.png" width="24" style="margin-bottom: -8px;"/>
+                                        <p:dataExporter type="csv" target="informacionDT" fileName="pagos" />
+                                    </h:commandLink>
+                                </f:facet>
+
+                                <p:column headerText="ID" sortBy="#{data.id}" width="30" >
+                                    <h:outputLabel value="#{data.id}"/>
+                                </p:column>
+
+                                <p:column headerText="ID Boton de pago" filterBy="#{data.botonPagoBean.id}" width="70" filterMatchMode="exact" styleClass="payments_IDBotonPagoFilerInput">
+                                    <h:outputLabel value="#{data.botonPagoBean.id}"/>
+                                </p:column>
+
+                                <p:column headerText="Linea de negocios" filterBy="#{data.botonPagoBean.botonLineasDeNegocio.nombre}" filterMatchMode="exact" width="105">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('informacionDTVar').filter()" style="min-width: 40px !important;" styleClass="payments_LineaNegocioFilterInput">
+                                            <f:selectItem itemLabel="Todas" itemValue="#{null}" noSelectionOption="true" />
+                                            <f:selectItems value="#{conciliatedPaymentsBean.businessLines}" var="line" itemLabel="#{line.nombre}" itemValue="#{line.nombre}" />
+                                        </p:selectOneMenu>
+                                    </f:facet>
+
+                                    <h:outputLabel value="#{data.botonPagoBean.botonLineasDeNegocio.nombre}"/>
+                                </p:column>
+
+                                <p:column headerText="Estado" filterBy="#{data.botonPagoBean.botonEstado.nombre}" filterMatchMode="exact" width="85">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('informacionDTVar').filter()" style="width: 36px !important" styleClass="payments_EstadoSelect">
+                                            <f:selectItem itemLabel="Todos" itemValue="#{null}" noSelectionOption="true" />
+                                            <f:selectItem itemLabel="CREADO" itemValue="CREADO" />
+                                            <f:selectItem itemLabel="PAGADO" itemValue="PAGADO" />
+                                            <f:selectItem itemLabel="RECHAZADO" itemValue="RECHAZADO" />
+                                            <f:selectItem itemLabel="VENCIDO" itemValue="VENCIDO" />
+                                        </p:selectOneMenu>
+                                    </f:facet>
+
+                                    <h:outputLabel value="#{data.botonPagoBean.botonEstado.nombre}"/>
+                                </p:column>
+
+                                <p:column id="date" headerText="Fecha de pago" filterBy="#{data.botonPagoBean.date}" width="110">
+                                    <f:facet name="filter">
+                                        <p:calendar id="cal1" pattern="dd-MM-yyyy HH:mm:ss" styleClass="payments_HoraEstadoCalendar">
+                                            <p:ajax event="dateSelect" oncomplete="PF('informacionDTVar').filter()" update="informacionDT" />
+                                        </p:calendar>
+                                    </f:facet>
+                                    <p:outputLabel value="#{data.botonPagoBean.date}" style="font-size:14px">
+                                        <f:convertDateTime pattern="dd-MM-yyyy HH:mm:ss" />
+                                    </p:outputLabel>
+                                </p:column>
+
+                                <p:column headerText="RUT Cliente" width="65">
+                                    <h:outputLabel value="#{data.botonPagoBean.clienteBean.rutCliente}"/>
+                                </p:column>
+
+                                <p:column headerText="Producto" width="60">
+                                    <h:outputLabel value="#{data.producto}"/>
+                                </p:column>
+
+                                <p:column headerText="ID Producto" width="50">
+                                    <h:outputLabel value="#{data.producto}"/>
+                                </p:column>
+
+                                <p:column headerText="ID Item" width="30">
+                                    <h:outputLabel value="#{data.identificadorItem}"/>
+                                </p:column>
+
+                                <p:column headerText="Cuota" width="40">
+                                    <h:outputLabel value="#{data.cuota}"/>
+                                </p:column>
+
+                                <p:column headerText="Forma de pago" width="60">
+                                    <h:outputLabel value="#{data.botonPagoBean.botonConvenio.botonInstitucionesPago.nombre}"/>
+                                </p:column>
+
+                                <p:column headerText="Aporte" width="40">
+                                    <h:outputLabel rendered="#{data.extraordinario == true}" value="SI"/>
+                                    <h:outputLabel rendered="#{data.extraordinario == false}" value="SI"/>
+                                </p:column>
+
+                                <p:column headerText="Descripcion" width="200">
+                                    <h:outputLabel value="#{data.descripcion}"/>
+                                </p:column>
+
+                                <p:column headerText="Monto" width="60">
+                                    <h:outputLabel value="#{data.montoFormatted}"/>
+                                </p:column>
+
+                                <p:column headerText="" width="30">
+                                    <p:commandButton id="details" icon="ui-icon-search" title="Detalle" action="#{conciliatedPaymentsBean.setSelected(data)}" update="form" oncomplete="PF('dialogVar').show();" />
+
+                                    <p:tooltip id="tool1" for="details" value="Ver detalle" trackMouse="true" />
+                                </p:column>
+
+                            </p:dataTable>
+
+                            <p:dialog
+                                    id="dialog"
+                                    visible="false"
+                                    widgetVar="dialogVar"
+                                    header="Detalle"
+                                    width="1100"
+                                    modal="true"
+                                    rendered="#{conciliatedPaymentsBean.selected != null}">
+
+                                <div style="overflow: auto;">
+                                    <p:panelGrid columns="6" style="border:1px solid #fff;width:400px">
+                                        <p:outputLabel value="ID" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.id}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Rut cliente" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.clienteBean.rutCliente}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Nombre cliente" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.clienteBean.nombreCliente}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Linea de negocio" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{paymentsBean.selected.botonLineasDeNegocio.nombre}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Codigo Autorización" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.codigoAutorizacion}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Codigo Transacción" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.codigoTransaccion}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Hora Creación" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.horaCreacionFormatted}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Hora Estado" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.horaEstadoFormatted}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Monto Total" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.montoFormatted}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Razón rechazo" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.razonRechazo}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="URL Fin de pago" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.urlFinPago}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Veces Pagado" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.vecesPagado}" readonly="true" style="width:170px"/>
+
+                                        <p:outputLabel value="Forma de pago" style="float: left;width: 100px;text-align: left;"/>
+                                        <p:inputText value="#{conciliatedPaymentsBean.selected.botonConvenio.botonInstitucionesPago.nombre}" readonly="true" style="width:170px"/>
+                                    </p:panelGrid>
+
+                                    <h3 style="border-top:1px solid #ddd;border-bottom:1px solid #ddd; padding-top:10px;margin-top: 20px !important;">Boletas</h3>
+                                    <p:dataTable id="boton_boletas_dt" var="boleta" widgetVar="botonBoletaDTvar"
+                                                 value="#{conciliatedPaymentsBean.selected.botonBoletas}" emptyMessage="No hay datos disponibles" paginator="true" rows="100"
+                                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 paginatorPosition="bottom" scrollable="true" resizableColumns="true" scrollWidth="100%">
+                                        <p:column headerText="ID" width="30">
+                                            <h:outputLabel value="#{boleta.id}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Descripción">
+                                            <h:outputLabel value="#{boleta.descripcion}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Fecha Contable" width="70">
+                                            <h:outputLabel value="#{boleta.fechaContable}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Fecha Transacción">
+                                            <h:outputLabel value="#{boleta.fechaTransaccion}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Hora Transacción">
+                                            <h:outputLabel value="#{boleta.horaTransaccion}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Monto">
+                                            <h:outputLabel value="#{boleta.montoFormatted}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Vencimiento" width="100">
+                                            <h:outputLabel value="#{boleta.vencimientoFormatted}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Conciliado" width="100">
+                                            <h:outputLabel value="SI" rendered="#{boleta.conciliado != null and boleta.conciliado == true}"/>
+                                            <h:outputLabel value="NO" rendered="#{boleta.conciliado != null and boleta.conciliado == false}"/>
+                                            <h:outputLabel value="N.I" rendered="#{boleta.conciliado == null}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Fecha Conciliación" width="100">
+                                            <h:outputLabel value="#{boleta.fechaConciliacion}">
+                                                <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                            </h:outputLabel>
+                                        </p:column>
+
+                                        <p:column headerText="Estado" width="100">
+                                            <h:outputLabel value="#{boleta.botonPagoBean.botonEstado.nombre}"/>
+                                        </p:column>
+                                    </p:dataTable>
+
+                                    <h3 style="border-top:1px solid #ddd;border-bottom:1px solid #ddd; padding-top:10px">Accesos</h3>
+                                    <p:dataTable id="boton_accesos_dt" var="acceso" widgetVar="botonAccesosDTvar"
+                                                 value="#{conciliatedPaymentsBean.selected.botonAccesos}" emptyMessage="No hay datos disponibles" paginator="true" rows="100"
+                                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 paginatorPosition="bottom" scrollable="true" resizableColumns="true" scrollWidth="100%">
+                                        <p:column headerText="ID" width="30" >
+                                            <h:outputLabel value="#{acceso.id}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Acción" width="60">
+                                            <h:outputLabel value="#{acceso.accion}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Fecha" width="40">
+                                            <h:outputLabel value="#{acceso.fechaFormatted}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Hora" width="40">
+                                            <h:outputLabel value="#{acceso.horaFormatted}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Información" width="150">
+                                            <h:outputLabel value="#{acceso.info}"/>
+                                        </p:column>
+
+                                        <p:column headerText="IP Acceso" width="150">
+                                            <h:outputLabel value="#{acceso.ipAcceso}"/>
+                                        </p:column>
+                                    </p:dataTable>
+
+                                    <div id="buttons" style="margin: 0 auto; margin-top:15px;clear: both;">
+                                        <p:commandButton value="Cancelar" onclick="PF('dialogVar').hide();" type="button" id="cancel_button" icon="fa fa-close" styleClass="GreenButton" style="margin-left:7px;" />
+                                    </div>
+                                </div>
+
+                            </p:dialog>
+
+                        <br/><br/>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

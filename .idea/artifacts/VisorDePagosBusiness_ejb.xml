@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="VisorDePagosBusiness:ejb">
+    <output-path>$PROJECT_DIR$/VisorDePagosBusiness/target</output-path>
+    <root id="archive" name="VisorDePagosBusiness-1.0.jar">
+      <element id="artifact" artifact-name="VisorDePagosBusiness:ejb exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BECSRefactorWeb:war">
+    <output-path>$PROJECT_DIR$/BECSRefactorWeb/target</output-path>
+    <root id="archive" name="BECSRefactorWeb.war">
+      <element id="artifact" artifact-name="BECSRefactorWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

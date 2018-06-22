@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="BotonDePagoIntranetBusiness:ejb exploded">
+    <output-path>$PROJECT_DIR$/BotonDePagoIntranetBusiness/target/BotonDePagoIntranetBusiness-1.0</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="BotonDePagoIntranetBusiness/ejb/EJB" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/BotonDePagoIntranetBusiness/target/BotonDePagoIntranetBusiness-1.0/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="BotonDePagoIntranetBusiness" />
+    </root>
+  </artifact>
+</component>

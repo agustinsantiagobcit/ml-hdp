@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="QRExampleWeb:war">
+    <output-path>$PROJECT_DIR$/QRExampleWeb/target</output-path>
+    <root id="archive" name="QRExampleWeb.war">
+      <element id="artifact" artifact-name="QRExampleWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

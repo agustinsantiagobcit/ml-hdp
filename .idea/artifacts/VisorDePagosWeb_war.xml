@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="VisorDePagosWeb:war">
+    <output-path>$PROJECT_DIR$/VisorDePagosWeb/target</output-path>
+    <root id="archive" name="VisorDePagosWeb.war">
+      <element id="artifact" artifact-name="VisorDePagosWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

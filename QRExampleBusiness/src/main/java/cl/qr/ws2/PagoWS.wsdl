@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="PagoWS" targetNamespace="http://ws.botonpago.hdp.metlife.cl/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://ws.botonpago.hdp.metlife.cl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://ws.botonpago.hdp.metlife.cl/" schemaLocation="PagoWS_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="ListarLineasDeNegocioResponse">
+    <part name="parameters" element="tns:ListarLineasDeNegocioResponse">
+    </part>
+  </message>
+  <message name="SolicitarPagoV2">
+    <part name="parameters" element="tns:SolicitarPagoV2">
+    </part>
+  </message>
+  <message name="SolicitarPagoV3">
+    <part name="parameters" element="tns:SolicitarPagoV3">
+    </part>
+  </message>
+  <message name="SolicitarPagoV4">
+    <part name="parameters" element="tns:SolicitarPagoV4">
+    </part>
+  </message>
+  <message name="ListarLineasDeNegocio">
+    <part name="parameters" element="tns:ListarLineasDeNegocio">
+    </part>
+  </message>
+  <message name="BuscarPagosResponse">
+    <part name="parameters" element="tns:BuscarPagosResponse">
+    </part>
+  </message>
+  <message name="ConsultarEstadoPago">
+    <part name="parameters" element="tns:ConsultarEstadoPago">
+    </part>
+  </message>
+  <message name="SolicitarPagoResponse">
+    <part name="parameters" element="tns:SolicitarPagoResponse">
+    </part>
+  </message>
+  <message name="ConsultarEstadoPagoResponse">
+    <part name="parameters" element="tns:ConsultarEstadoPagoResponse">
+    </part>
+  </message>
+  <message name="SolicitarPagoV3Response">
+    <part name="parameters" element="tns:SolicitarPagoV3Response">
+    </part>
+  </message>
+  <message name="BuscarPagos">
+    <part name="parameters" element="tns:BuscarPagos">
+    </part>
+  </message>
+  <message name="ListarFormasPago">
+    <part name="parameters" element="tns:ListarFormasPago">
+    </part>
+  </message>
+  <message name="ListarFormasPagoResponse">
+    <part name="parameters" element="tns:ListarFormasPagoResponse">
+    </part>
+  </message>
+  <message name="SolicitarPagoV2Response">
+    <part name="parameters" element="tns:SolicitarPagoV2Response">
+    </part>
+  </message>
+  <message name="SolicitarPago">
+    <part name="parameters" element="tns:SolicitarPago">
+    </part>
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception">
+    </part>
+  </message>
+  <message name="SolicitarPagoV4Response">
+    <part name="parameters" element="tns:SolicitarPagoV4Response">
+    </part>
+  </message>
+  <portType name="PagoWS">
+    <operation name="SolicitarPago">
+      <input message="tns:SolicitarPago" wsam:Action="SolicitarPago">
+    </input>
+      <output message="tns:SolicitarPagoResponse" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/SolicitarPagoResponse">
+    </output>
+      <fault name="Exception" message="tns:Exception" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/SolicitarPago/Fault/Exception">
+    </fault>
+    </operation>
+    <operation name="SolicitarPagoV2">
+      <input message="tns:SolicitarPagoV2" wsam:Action="SolicitarPagoV2">
+    </input>
+      <output message="tns:SolicitarPagoV2Response" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/SolicitarPagoV2Response">
+    </output>
+      <fault name="Exception" message="tns:Exception" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/SolicitarPagoV2/Fault/Exception">
+    </fault>
+    </operation>
+    <operation name="SolicitarPagoV3">
+      <input message="tns:SolicitarPagoV3" wsam:Action="SolicitarPagoV3">
+    </input>
+      <output message="tns:SolicitarPagoV3Response" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/SolicitarPagoV3Response">
+    </output>
+      <fault name="Exception" message="tns:Exception" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/SolicitarPagoV3/Fault/Exception">
+    </fault>
+    </operation>
+    <operation name="SolicitarPagoV4">
+      <input message="tns:SolicitarPagoV4" wsam:Action="SolicitarPagoV4">
+    </input>
+      <output message="tns:SolicitarPagoV4Response" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/SolicitarPagoV4Response">
+    </output>
+      <fault name="Exception" message="tns:Exception" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/SolicitarPagoV4/Fault/Exception">
+    </fault>
+    </operation>
+    <operation name="BuscarPagos">
+      <input message="tns:BuscarPagos" wsam:Action="BuscarPagos">
+    </input>
+      <output message="tns:BuscarPagosResponse" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/BuscarPagosResponse">
+    </output>
+      <fault name="Exception" message="tns:Exception" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/BuscarPagos/Fault/Exception">
+    </fault>
+    </operation>
+    <operation name="ListarFormasPago">
+      <input message="tns:ListarFormasPago" wsam:Action="ListarFormasPago">
+    </input>
+      <output message="tns:ListarFormasPagoResponse" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/ListarFormasPagoResponse">
+    </output>
+      <fault name="Exception" message="tns:Exception" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/ListarFormasPago/Fault/Exception">
+    </fault>
+    </operation>
+    <operation name="ListarLineasDeNegocio">
+      <input message="tns:ListarLineasDeNegocio" wsam:Action="ListarLineasDeNegocio">
+    </input>
+      <output message="tns:ListarLineasDeNegocioResponse" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/ListarLineasDeNegocioResponse">
+    </output>
+      <fault name="Exception" message="tns:Exception" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/ListarLineasDeNegocio/Fault/Exception">
+    </fault>
+    </operation>
+    <operation name="ConsultarEstadoPago">
+      <input message="tns:ConsultarEstadoPago" wsam:Action="ConsultarEstadoPago">
+    </input>
+      <output message="tns:ConsultarEstadoPagoResponse" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/ConsultarEstadoPagoResponse">
+    </output>
+      <fault name="Exception" message="tns:Exception" wsam:Action="http://ws.botonpago.hdp.metlife.cl/PagoWS/ConsultarEstadoPago/Fault/Exception">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="PagoBinding" type="tns:PagoWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="SolicitarPago">
+      <soap:operation soapAction="SolicitarPago"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="SolicitarPagoV2">
+      <soap:operation soapAction="SolicitarPagoV2"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="SolicitarPagoV3">
+      <soap:operation soapAction="SolicitarPagoV3"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="SolicitarPagoV4">
+      <soap:operation soapAction="SolicitarPagoV4"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="BuscarPagos">
+      <soap:operation soapAction="BuscarPagos"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="ListarFormasPago">
+      <soap:operation soapAction="ListarFormasPago"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="ListarLineasDeNegocio">
+      <soap:operation soapAction="ListarLineasDeNegocio"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="ConsultarEstadoPago">
+      <soap:operation soapAction="ConsultarEstadoPago"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="PagoWS">
+    <port name="Pago" binding="tns:PagoBinding">
+      <soap:address location="http://13.56.78.181:80/BotonDePagoIntranet/PagoWS"/>
+    </port>
+  </service>
+</definitions>

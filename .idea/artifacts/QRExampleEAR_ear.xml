@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="QRExampleEAR:ear">
+    <output-path>$PROJECT_DIR$/QRExampleEAR/target</output-path>
+    <root id="archive" name="QRExampleEAR-1.0.ear">
+      <element id="artifact" artifact-name="QRExampleEAR:ear exploded" />
+    </root>
+  </artifact>
+</component>

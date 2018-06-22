@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="HubDePagosAdminBussiness:ejb">
+    <output-path>$PROJECT_DIR$/HubDePagosAdminBusiness/target</output-path>
+    <root id="archive" name="HubDePagosAdminBusiness-1.0.jar">
+      <element id="artifact" artifact-name="HubDePagosAdminBussiness:ejb exploded" />
+    </root>
+  </artifact>
+</component>

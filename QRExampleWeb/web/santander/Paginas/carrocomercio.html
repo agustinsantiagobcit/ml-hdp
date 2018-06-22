@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>PAGINA CARRO COMERCIO</title>
+</head>
+<script languaje="javascript">
+function PagoEnLinea ()
+{ var str10 = "          ";
+  var idTrx = "961";
+  var id = new Date();
+  idTrx += id.getFullYear().toString() + (id.getMonth()+1).toString() + id.getDay().toString();
+  idTrx += id.getHours().toString() + id.getMinutes().toString() + id.getSeconds().toString();
+  idTrx =  idTrx + str10 + str10;
+  idTrx = idTrx.substr(0,16);
+  params ="<?xml version='1.0' ?><MPINI><IDCOM>9951487002</IDCOM><IDTRX>9951487002435112</IDTRX><TOTAL>14234</TOTAL><NROPAGOS>1</NROPAGOS><DETALLE><SRVREC>9023</SRVREC><MONTO>14234</MONTO><GLOSA>Pago XX</GLOSA><CANTIDAD>1</CANTIDAD><PRECIO>14234</PRECIO><DATOADIC>00048217630063512443</DATOADIC></DETALLE></MPINI>"
+  		   
+  document.frmEnvia.data.value = params;
+  document.frmEnvia.target = "_blank";
+  document.frmEnvia.action= "http://127.0.0.1:5555/cgi-bin/santander/hipo/cgicomer.exe";
+  document.frmEnvia.submit();
+}
+
+
+</script>
+
+<body>
+<form name="frmEnvia" method="post">
+<table border=1>
+<tr><td align=center colspan=4>COMERCIO METLIFE HIPOTECARIO</td></tr><br>
+<tr><td align=center colspan=4>Esta es la p�gina carro de pago del comercio</td></tr><br>
+<tr>
+	<td>&nbsp; </td>
+	<td>DESCRIPCION</td>
+	<td>PRECIO UNITARIO</td>
+	<td>CANTIDAD</td>		
+</tr>	
+<tr>
+	<td><input type="checkbox" name="caja" value="" checked></td>
+	<td>ITEM NUMERO 1</td>
+	<td align=right>$40000</td>
+	<td align=right>1</td>			
+</tr>	
+<tr>
+	<td><input type="checkbox" name="caja" value="" ></td>
+	<td>ITEM NUMERO 2</td>
+	<td align=right>$60000</td>	
+	<td align=right>1</td>			
+</tr>	
+<tr>
+	<td><input type="checkbox" name="caja" value="" checked></td>
+	<td>ITEM NUMERO 3</td>
+	<td align=right>$10000</td>	
+	<td align=right>1</td>			
+</tr>	
+<tr>
+	<td><input type="checkbox" name="caja" value="" ></td>
+	<td>ITEM NUMERO 4</td>
+	<td align=right>$50000</td>	
+	<td align=right>1</td>			
+</tr><br>
+<tr><td align=right colspan=4> 1 |<a href="//">2</a>|<a href="//">3</a></td></tr><br>
+<tr><td align=right colspan=4><a href="javascript:PagoEnLinea();">Pagar con Banco Ita&uacute;</a></td></tr><br>	
+<tr><td colspan=4>NOTA: Al pinchar <b>Pagar</b> se crea el XML <br>y se env�a el mensaje <b>TX</b> a la pieza de comunicaci�n con Banco <b>cgicomer</b>.</tr><br>
+<input type="HIDDEN" name="data">
+</table>
+</form>
+</body>
+</html>

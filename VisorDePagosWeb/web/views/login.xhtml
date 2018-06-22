@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
+        </f:facet>
+        <title>Visor de pagos</title>
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body styleClass="loginbodyblue">
+        
+        <div class="Wid90 DispBlock MarAuto MarTopPerc5 TexAlCenter">
+            <div class="Wid33 MarAuto WidAutoOnMobile">
+                <h:graphicImage alt="BluePrints IT Framework" name="metlife_logo.png" library="images" style="width:60%; max-width:300px;"/>
+                <div class="EmptyBox30"></div>
+                <h:form id="loginform">
+                <div class="Card ShadowEffect">
+
+                    <p:messages showDetail="true" autoUpdate="true" closable="true" />
+                    <div class="EmptyBox20"></div>
+                    <div class="Wid100 OvHidden BigTopic Fs30"><h:graphicImage alt="login_access_img" styleClass="login_access_img" name="access-512.png" library="images"/><h3>Ingreso Visor de Pagos</h3></div>
+                    <div class="EmptyBox20"></div>
+
+                    <p:messages id="login-form-messages" showDetail="false" autoUpdate="true" closable="false" />
+
+                    <div class="Wid100"><p:inputText placeholder="Usuario" value="#{authenticationBean.username}" styleClass="Wid80 TexAlCenter Fs18"/></div>
+                    <div class="EmptyBox10"></div>
+                    <div class="Wid100"><p:inputText type="password" placeholder="Contraseña" value="#{authenticationBean.password}" styleClass="Wid80 TexAlCenter Fs18"/></div>
+                    <div class="EmptyBox30"></div>
+                    <div class="Wid100"><p:commandButton update="login-form-messages" value="Ingresar" icon="fa fa-sign-in" styleClass="Wid80 Fs18 White RaisedButton" action="#{authenticationBean.login}"/></div>
+                    <div class="EmptyBox20"></div>
+                </div>
+                </h:form>
+                <!--<div class="Wid100 TexAlCenter MarTop20 Fs14 FontRobotoRegular">
+                    <i class="fa fa-copyright"></i>2016 <a style="color:#0061a0" href="http://www.blueprintsit.cl">BluePrints IT.</a><br/>
+                    <span>Version: 1.0</span>
+                </div>-->
+            </div>
+        </div>
+        
+        <h:outputStylesheet name="css/core-layout.css" library="rio-layout" />
+        <h:outputStylesheet name="css/animate.css" library="rio-layout" />
+        <h:outputStylesheet name="css/rio-font.css" library="rio-layout" />
+        <h:outputStylesheet name="css/ripple-effect.css" library="rio-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="rio-layout" />
+        <h:outputStylesheet name="css/rio-layout.css" library="rio-layout" />
+    </h:body>
+
+</html>

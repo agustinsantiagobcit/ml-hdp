@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BECSRefactorEAR/BECSRefactorEAR.iml" filepath="$PROJECT_DIR$/BECSRefactorEAR/BECSRefactorEAR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BECSRefactorWeb/BECSRefactorWeb.iml" filepath="$PROJECT_DIR$/BECSRefactorWeb/BECSRefactorWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BotonDePagoDmzEAR/BotonDePagoDmzEAR.iml" filepath="$PROJECT_DIR$/BotonDePagoDmzEAR/BotonDePagoDmzEAR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BotonDePagoDmzWeb/BotonDePagoDmzWeb.iml" filepath="$PROJECT_DIR$/BotonDePagoDmzWeb/BotonDePagoDmzWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BotonDePagoIntranetBusiness/BotonDePagoIntranetBusiness.iml" filepath="$PROJECT_DIR$/BotonDePagoIntranetBusiness/BotonDePagoIntranetBusiness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BotonDePagoIntranetDomain/BotonDePagoIntranetDomain.iml" filepath="$PROJECT_DIR$/BotonDePagoIntranetDomain/BotonDePagoIntranetDomain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BotonDePagoIntranetEAR/BotonDePagoIntranetEAR.iml" filepath="$PROJECT_DIR$/BotonDePagoIntranetEAR/BotonDePagoIntranetEAR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BotonDePagoIntranetWeb/BotonDePagoIntranetWeb.iml" filepath="$PROJECT_DIR$/BotonDePagoIntranetWeb/BotonDePagoIntranetWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HubDePagos.iml" filepath="$PROJECT_DIR$/HubDePagos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HubDePagosAdminBusiness/HubDePagosAdminBusiness.iml" filepath="$PROJECT_DIR$/HubDePagosAdminBusiness/HubDePagosAdminBusiness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HubDePagosAdminBusiness/HubDePagosAdminBussiness.iml" filepath="$PROJECT_DIR$/HubDePagosAdminBusiness/HubDePagosAdminBussiness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HubDePagosAdminEAR/HubDePagosAdminEAR.iml" filepath="$PROJECT_DIR$/HubDePagosAdminEAR/HubDePagosAdminEAR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HubDePagosAdminWeb/HubDePagosAdminWeb.iml" filepath="$PROJECT_DIR$/HubDePagosAdminWeb/HubDePagosAdminWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HubDePagosBussiness/HubDePagosBussiness.iml" filepath="$PROJECT_DIR$/HubDePagosBussiness/HubDePagosBussiness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HubDePagosDomain/HubDePagosDomain.iml" filepath="$PROJECT_DIR$/HubDePagosDomain/HubDePagosDomain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HubDePagosPersistence/HubDePagosPersistence.iml" filepath="$PROJECT_DIR$/HubDePagosPersistence/HubDePagosPersistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QRExampleBusiness/QRExampleBusiness.iml" filepath="$PROJECT_DIR$/QRExampleBusiness/QRExampleBusiness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QRExampleEAR/QRExampleEAR.iml" filepath="$PROJECT_DIR$/QRExampleEAR/QRExampleEAR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QRExampleWeb/QRExampleWeb.iml" filepath="$PROJECT_DIR$/QRExampleWeb/QRExampleWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VisorDePagosBusiness/VisorDePagosBusiness.iml" filepath="$PROJECT_DIR$/VisorDePagosBusiness/VisorDePagosBusiness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VisorDePagosEAR/VisorDePagosEAR.iml" filepath="$PROJECT_DIR$/VisorDePagosEAR/VisorDePagosEAR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VisorDePagosWeb/VisorDePagosWeb.iml" filepath="$PROJECT_DIR$/VisorDePagosWeb/VisorDePagosWeb.iml" />
+    </modules>
+  </component>
+</project>

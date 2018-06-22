@@ -1,0 +1,36 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pr="http://primefaces.org/rio">
+
+    <div class="Animated05" id="layout-menu-cover">
+        <ul class="layout-menu">
+            <li>
+                <a class="menulink ripplelink">
+                    <i class="icon-round58 Fs40"></i>
+                    <span class="Fs18">#{authenticationBean.loggedUser.username}<i class="icon-downwards Fright Fs20"></i><br /><span class="Fs12 FontRobotoLight">#{authenticationBean.loggedUser.name}</span></span>
+                </a>
+            </li>
+        </ul>
+        <div class="Separator"></div>
+
+
+        <pr:menu>
+            <p:menuitem id="rm_sqlextractors" value="Extractores SQL" icon="fa fa-terminal" outcome="/views/extractores/extractores.xhtml"/>
+            <p:menuitem id="rm_odmodel" value="Modelo On Demand" icon="fa fa-cubes" outcome="/views/ondemand/modelos.xhtml"/>
+            <p:menuitem id="rm_altiuztemplate" value="Plantillas Altiuz" icon="fa fa-file-code-o" outcome="/views/altiuz/plantillas.xhtml"/>
+            <p:menuitem id="rm_templates" value="Gestor de plantillas" icon="fa fa-server" outcome="/views/gestor_plantillas/editar.xhtml"/>
+            <p:menuitem id="rm_process" value="Procesos" icon="fa fa-tasks" outcome="/views/procesos/procesos.xhtml"/>
+            <p:menuitem id="rm_bitacora" value="Bitácora" icon="fa fa-calendar" outcome="/views/bitacora/bitacora.xhtml"/>
+            <p:menuitem id="rm_configuraciones" value="Configuraciones" icon="fa fa-gears" outcome="/views/configuraciones.xhtml"/>
+            <p:menuitem id="rm_liteclient" value="Cliente Ligero" icon="fa fa-database" outcome="/views/liteclient.xhtml"/>
+            <p:menuitem id="rm_timers" value="Timers" icon="fa fa-clock-o" outcome="/views/timers/timers.xhtml"/>
+            <p:separator />
+        </pr:menu>
+
+    </div>
+
+</ui:composition>

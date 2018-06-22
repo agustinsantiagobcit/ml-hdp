@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="content">
+
+        <h:form id="form" prependId="false" enctype="multipart/form-data">
+
+            <div class="Container100">
+                <div class="ContainerIndent">
+                    <div class="Card ShadowEffect  ">
+                        <div class="Container100 Responsive100">
+                            <div class="ContainerIndent">
+                                <h2 class="BigTopic">Conciliación</h2>
+
+                                <p:growl id="messages" showDetail="true" />
+
+                                <div style="width:40%;float:left">
+                                    <h:outputLabel value="Lineas de negocio" style="float:left"/>
+                                    <p:selectOneMenu value="#{conciliadorBean.businessLine}" style="float:left;clear:both;width: 300px;">
+                                        <f:selectItem itemLabel="Seleccionar..." itemValue="#{null}" noSelectionOption="true" />
+                                        <f:selectItems value="#{authenticationBean.userBotonLineasNegocio}" var="line" itemLabel="#{line.nombre}" itemValue="#{line.nombre}" />
+                                        <p:ajax event="change" update="insts"
+                                                listener="#{conciliadorBean.subjectSelectionChanged}" />
+                                    </p:selectOneMenu>
+                                </div>
+
+                                <div style="width:40%;float:left;clear:both;margin-top:20px">
+                                    <h:outputLabel value="Instituciones de pago" style="float:left"/>
+                                    <p:selectOneMenu id="insts" value="#{conciliadorBean.paymentInstitutionId}" style="float:left;clear:both;width: 300px;">
+                                        <f:selectItem itemLabel="Seleccionar..." itemValue="#{null}" noSelectionOption="true" />
+                                        <f:selectItems value="#{conciliadorBean.paymentInstitutions}" var="ins" itemLabel="#{ins.name}" itemValue="#{ins.id}" />
+                                    </p:selectOneMenu>
+                                </div>
+
+                                <div style="width:40%;float:left;clear:both;margin-top:20px">
+                                    <h:outputLabel value="Seleccionar archivo (XML, CSV, TXT, XLS, XLSX)" style="float:left"/>
+                                    <p:fileUpload value="#{conciliadorBean.file}" mode="simple" skinSimple="true" uploadLabel="Seleccionar" style="float: left;clear: both;" label="Seleccionar"/>
+                                </div>
+
+                                <div style="width:40%;float:left;clear:both;margin-top:30px">
+                                    <p:commandButton value="Conciliar" ajax="false" actionListener="#{conciliadorBean.upload}" styleClass="GreenButton"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+                <f:facet name="start">
+                    <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+                </f:facet>
+            </p:ajaxStatus>
+
+            <p:ajaxStatus onstart="PF('statusDialogNew').show()" onsuccess="PF('statusDialogNew').hide()" />
+
+            <p:dialog widgetVar="statusDialogNew" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <p:graphicImage name="images/preloader.gif" library="rio-layout"/>
+            </p:dialog>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

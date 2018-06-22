@@ -1,0 +1,126 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ct="http://www.chartistjsf.org/charts"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="content">
+
+        <h:outputScript name="/fusioncharts/fusioncharts.js" library="js"/>
+        <h:outputScript name="/fusioncharts/fusioncharts.charts.js" library="js"/>
+        <h:outputScript name="/fusioncharts/themes/fusioncharts.theme.ocean.js" library="js"/>
+
+        <style type="text/css">
+            .raphael-group-3-creditgroup {
+                display:none;
+            }
+        </style>
+
+        <h:form id="form" prependId="false">
+
+            <div class="Container100">
+                <div class="ContainerIndent">
+                    <div class="Card ShadowEffect  ">
+                        <div class="Container100 Responsive100">
+                            <div class="ContainerIndent">
+                                <h2 class="BigTopic">Estadísticas de pagos</h2>
+
+                                <p:growl id="messages" showDetail="true" />
+
+                                <div style="width:40%;float:left">
+                                    <h:outputLabel value="Tipo Gráfico" style="float:left"/>
+                                    <p:selectOneMenu value="#{chartsBean.graphType}" style="float:left;clear:both;min-width: 248px;">
+                                        <f:selectItem itemLabel="Seleccionar..." itemValue="#{null}" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="Gráfico de Torta" itemValue="1"/>
+                                        <f:selectItem itemLabel="Gráfico Historia de Pago por Mes" itemValue="2"/>
+                                        <p:ajax event="change" update="form"
+                                                listener="#{chartsBean.subjectSelectionChanged}" />
+                                    </p:selectOneMenu>
+                                </div>
+
+                                <p:fragment rendered="#{chartsBean.showForm1}">
+                                    <div style="width:300px;float:left;clear:both;margin-top:10px">
+                                        <h:outputLabel value="Lineas de negocio" style="float:left"/>
+                                        <p:selectOneMenu value="#{chartsBean.businessLine}" style="float:left;clear:both;min-width: 248px;">
+                                            <f:selectItem itemLabel="Todas" itemValue="#{null}" noSelectionOption="true" />
+                                            <f:selectItems value="#{authenticationBean.userBusinessLines}" var="line" itemLabel="#{line.nombre}" itemValue="#{line.nombre}" />
+                                        </p:selectOneMenu>
+                                    </div>
+
+                                    <div style="width:300px;float:left;clear:both;margin-top:10px">
+                                        <h:outputLabel value="Fecha desde" style="float:left"/>
+                                        <p:calendar id="calendar_button1" value="#{chartsBean.dateFrom}" style="clear: both;float: left;width: 300px;"/>
+                                    </div>
+
+                                    <div style="width:300px;float:left;clear:both;margin-top:10px">
+                                        <h:outputLabel value="Fecha hasta" style="float:left"/>
+                                        <p:calendar id="calendar_button2" value="#{chartsBean.dateTo}" style="clear: both;float: left;width: 300px;"/>
+                                    </div>
+
+                                    <div style="width:300px;float:left;clear:both;margin-top:10px">
+                                        <h:outputLabel value="PAGADOS" style="float:left"/>
+                                        <p:selectBooleanCheckbox value="#{chartsBean.pagados}" style="margin-left: 64px;">
+                                            <p:ajax update="messages" listener="#{chartsBean.addMessage}" />
+                                        </p:selectBooleanCheckbox>
+                                    </div>
+
+                                    <div style="width:300px;float:left;clear:both;margin-top:10px">
+                                        <h:outputLabel value="RECHAZADOS" style="float:left"/>
+                                        <p:selectBooleanCheckbox value="#{chartsBean.rechazados}" style="margin-left: 37px;">
+                                            <p:ajax update="messages" listener="#{chartsBean.addMessage}" />
+                                        </p:selectBooleanCheckbox>
+                                    </div>
+
+                                    <div style="width:40%;float:left;clear:both;margin-top:30px">
+                                        <p:commandButton value="Filtrar" action="#{chartsBean.updatePie}" update="charts" styleClass="GreenButton"/>
+                                    </div>
+
+                                </p:fragment>
+
+                                <p:fragment rendered="#{chartsBean.showForm2}">
+                                    <div style="width:300px;float:left;clear:both;margin-top:10px">
+                                        <h:outputLabel value="Lineas de negocio" style="float:left"/>
+                                        <p:selectOneMenu value="#{chartsBean.businessLine}" style="float:left;clear:both;min-width: 248px;">
+                                            <f:selectItem itemLabel="Todas" itemValue="all"/>
+                                            <f:selectItems value="#{authenticationBean.userBusinessLines}" var="line" itemLabel="#{line.nombre}" itemValue="#{line.nombre}" />
+                                        </p:selectOneMenu>
+                                    </div>
+
+                                    <div style="width:300px;float:left;margin-top:10px;clear:both">
+                                        <h:outputLabel value="Año" style="float:left"/>
+                                        <p:selectOneMenu value="#{chartsBean.ano}" style="float:left;clear:both;min-width: 248px;">
+                                            <f:selectItem itemLabel="Seleccionar" itemValue="#{null}" noSelectionOption="true" />
+                                            <f:selectItems value="#{chartsBean.allAnos}" var="ano" itemLabel="#{ano}" itemValue="#{ano}" />
+                                        </p:selectOneMenu>
+                                    </div>
+
+                                    <div style="width:40%;float:left;clear:both;margin-top:30px">
+                                        <p:commandButton value="Filtrar" action="#{chartsBean.updateBar}" update="charts, messages" styleClass="GreenButton"/>
+                                    </div>
+                                </p:fragment>
+
+                                <p:fragment id="charts">
+                                    <p:fragment id="pieFusionCharts" rendered="#{chartsBean.showGraph1}">
+                                        <p:chart id="pieChart" type="pie" model="#{chartsBean.pieChartModel}" style="width:400px;height:300px" />
+                                    </p:fragment>
+
+                                    <p:fragment id="barFusionCharts" rendered="#{chartsBean.showGraph2}">
+                                        <ct:chart id="barChartn" type="bar" model="#{chartsBean.barChartModel}">
+                                            <p:ajax event="itemSelect" listener="#{chartsBean.barItemSelect}" update="messages" />
+                                        </ct:chart>
+                                    </p:fragment>
+                                </p:fragment>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

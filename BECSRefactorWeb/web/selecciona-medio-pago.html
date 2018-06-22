@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  </head>
+  <body>
+  
+   <div class="container">
+    <header>
+        <div id="logo"><img src="img/logo_bancoestado_corredora.png"></div>
+ </header>
+</div>
+
+
+    <div class="container">
+      <div class="row steps visible-xs">
+        <div class="line-step hidden-xs"></div>
+        <div class="col-xs-4">
+          <div class="circle-number step-active">1</div>
+        </div>
+        <div class="col-xs-4">
+          <div class="circle-number step-active">2</div>
+        </div>
+        <div class="col-xs-4">
+          <div class="circle-number step-active">3</div>
+        </div>
+      </div>
+
+      <div class="steps-desktop hidden-xs">
+        <div class="col-xs-4 block-step step-active">
+          <span>1</span>Datos del Asegurado
+        </div>
+        <div class="col-xs-4 block-step step-active">
+          <span>2</span>Confirmación de Datos
+        </div>
+        <div class="col-xs-4 block-step arrow-none step-active">
+          <span>3</span>Confirmación de Transacción
+        </div>
+      </div>
+
+
+
+      <h1 class="titles">Selecciona Medio de Pago</h1>
+
+      <div class="plan-elegido">
+              <p>Valor a pagar UF 0,42:</p>
+              <h1>$10.950</h1>
+              <p style="font-size: 11px;">Valor calculado según valor de la UF dd-mm-aaaa por $xx.xxx,xx</p>
+          </div>
+
+      <div class="form-pago col-md-8 col-md-offset-2">
+        <div class="form-medio-pago">
+
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <input type="radio" name="contratar" id="bancoestado" value="option2">
+              <label for="bancoestado"><img src="img/logo-banco-estado.jpg"></label>
+            </div>
+          </div>
+
+          <div class="col-xs-6">
+            <div class="checkbox">
+              <input type="radio" name="contratar" id="webpay" value="option1">
+              <label for="webpay"><img src="img/webpay.jpg"></label>
+            </div>
+          </div>          
+        </div>
+        
+        <div class="form-group">
+        
+       <div class="col-xs-12  col-med col-sm-6 switch">
+        <label style="cursor:pointer;" for="a-1" >Acepto Condiciones de Seguro </label>
+       <div class="pull-right">
+       <input type="checkbox" name="my-checkbox" data-size="mini" onchange="window.open('condiciones_seguro.html')">
+       
+       
+       </div>
+        
+        
+        </div>
+        
+        <div class="col-xs-12  col-med col-sm-6 switch">
+        	<label style="cursor:pointer;" for="a-1" >Acepto Condiciones de Pago</label>
+			<div class="pull-right">
+       <input type="checkbox" name="my-checkbox" data-size="mini" onchange="window.open('condiciones_pago.html')">
+        
+         </div>
+        
+        
+        
+        
+        
+        </div>
+        
+        
+        
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+            <input type="text" class="form-control" id="codigo" placeholder="Código de verificación">
+        </div>
+        <br>
+        <p class="pull-left text-center col-xs-12">Ingresa el código de verificación que fue enviado a tu celular.</p>
+        
+        <div class="btn-continuar">
+          <a id="button" class="contrata_en_linea" href="felicitaciones.html" style="border-style: none;height: 48px !important;margin-top:-15px !important;">
+             <span class="button_text1">Contratar</span>
+          </a>
+        </div>
+          
+        <p class="col-xs-12 text-center" id="phone-number">
+          <span class="glyphicon glyphicon-earphone"></span>600 200 7000
+        </p>
+      </div>
+
+     
+
+    </div>
+
+
+
+    <footer>
+      <div class="container">
+        <p>Seguro Intermediado por BancoEstado Corredores de Seguros S.A. La compañía que asume los riesgos es MetLife Chile Seguros de Vida S.A. Las condiciones del seguro se encuentran depositadas en la SVS bajo el código POL 3 2013 0085, articulo N°2, letra A (Muerte Accidental). Oferta válida para contratar hasta el 31/12/2017.</p>
+      </div>
+    </footer>
+    
+
+    
+   
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+	<script>
+		$("[name='my-checkbox']").bootstrapSwitch();
+	</script>
+ 
+
+  </body>
+
+ </html>

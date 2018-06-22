@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/animate.css">
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="js/jquery.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+      <script>
+         $(function() {
+            $('.selectbecs').on('change', function() {
+               if(this.value == 1){
+                  $(".plus").hide(0); 
+                  $(".individual").fadeIn(500);
+               } else {
+                  $(".individual").hide(0);
+                  $(".plus").fadeIn(500); 
+               }
+            });
+
+            $("#button").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#bottom_section").offset().top
+                }, 2000);
+            });
+
+         });
+
+
+      </script>
+   </head>
+   <body>
+      <div class="container zi1" style="background-color:#fff">
+         <header style="background-color:#fff" class="zi1">
+            <div id="logo"><img src="img/logo_bancoestado_corredora.png"></div>
+         </header>
+      </div>
+      <div id="banner" style="background-color:#f1f0e2">
+         <div class="container">
+            <div id="banner-top">
+               <div class="banner-texts">
+                  <span class="title_banner1 animated fadeInUp">PROTEGE A</span>
+                  <span class="title_banner2 animated fadeInUp">QUIEN MÁS QUIERES</span>
+                  <span class="title_banner3 animated fadeInUp">y cuida tu bolsillo durante todo el año</span>
+               </div>
+               <div id="gg">
+                  <img class="parallaximg zi3" src="img/bubbles.png" width="100">
+                  <img class="parallaximg2 zi3" src="img/bubbles.png" width="95">
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="container">
+         <div class="row">
+            <h3 class="title_mainsection1">SEGURO ACCIDENTES PERSONALES</h3>
+            <h4 class="title_mainsection2">
+            Cubre en caso de <b>Fallecimiento Accidental</b> al Asegurado</h3>
+         </div>
+         <div class="row">
+            <h2 class="title_mainsection3">
+            Selecciona tu plan</h3>
+            <div class="container mb15" style="">
+               <div class="col-xs-6 col-sm-2 space"></div>
+               <div class="col-xs-6 col-sm-4">
+                  <select id="select" class="form-control selectbecs">
+                     <option selected value="1">Plan Individual UF 0,25</option >
+                     <option value="2">Plan Plus UF 0,42</option>
+                  </select>
+               </div>
+               <div class="col-xs-6 col-sm-4">
+                  <a id="button" class="conoce_mas" style="border-style: none;clear: both;margin-top: 15px;>
+                     <span style="color:#fff !important;">CONOCE MÁS DE LAS COBERTURAS</span>
+                  </a>
+               </div>
+               <div class="col-xs-6 col-sm-2 space"></div>
+            </div>
+
+
+            <!-- individual -->
+            <div class="container mb15 individual">
+               <div class="col-xs-6 col-sm-2 space"></div>
+               <div class="col-xs-6 col-sm-4">
+                  <div id="white_container">
+                     <p class="precio_plan_es">EL PRECIO DEL PLAN QUE SELECCIONASTE ES</p>
+                     <p class="precio_al_ano">$ 6.659 al año</p>
+                     <p class="uf_al_ano">UF 0,25 ANUAL</p>
+                     <p class="valor_uf_al_dia">Valor calculado según valor UF 20/07/2017 por $26.635</p>
+                  </div>
+               </div>
+               <div class="col-xs-6 col-sm-4">
+                  <div id="gray_container">
+                     <p class="cob_montoanual">TU COBERTURA POR UN MONTO ANUAL ASEGURADO DE:</p>
+                     <p class="cob_uf">UF 180</p>
+                     <p class="cob_pesos">Equivalente a $4.793.300</p>
+                  </div>
+               </div>
+               <div class="col-xs-6 col-sm-2 space"></div>
+            </div>
+
+            <!-- plus -->
+            <div class="container mb15 plus">
+               <div class="col-xs-6 col-sm-2 space"></div>
+               <div class="col-xs-6 col-sm-4">
+                  <div id="white_container">
+                     <p class="precio_plan_es">EL PRECIO DEL PLAN QUE SELECCIONASTE ES</p>
+                     <p class="precio_al_ano">$ 12.659 al año</p>
+                     <p class="uf_al_ano">UF 0,4 ANUAL</p>
+                     <p class="valor_uf_al_dia">Valor calculado según valor UF 20/07/2017 por $26.635</p>
+                  </div>
+               </div>
+               <div class="col-xs-6 col-sm-4">
+                  <div id="gray_container">
+                     <p class="cob_montoanual">TU COBERTURA POR UN MONTO ANUAL ASEGURADO DE:</p>
+                     <p class="cob_uf">UF 500</p>
+                     <p class="cob_pesos">Equivalente a $14.793.300</p>
+                  </div>
+               </div>
+               <div class="col-xs-6 col-sm-2 space"></div>
+            </div>
+
+
+
+            <div class="container cbecs individual">
+               <p class="contrata">POR SOLO <span class="orange">$4.528</span> ADICIONALES AL PLAN SELECCIONADO </br> 
+               <b>MEJORA TU COBERTURA ANUAL</b> A <span class="orange">UF 500</span> (equivalente a $13.317.500) SELECCIONANDO EL <span class="orange">PLAN PLUS</span></p>
+            </div>
+
+            <div class="container cbecs plus">
+               <p class="contrata"><span class="orange">FELICITACIONES!!!</span> HAZ SELECCIONADO EL PLAN <b>MÁS CONVENIENTE</b> QUE TENEMOS DISPONIBLE PARA TI </br>CON UNA <b>COBERTURA ANUAL</b> DE <span class="orange">UF 500</span> (equivalente a $13.317.500) PARA <span class="orange">PROTEGER A QUIEN MÁS QUIERES</span></p>
+            </div>
+            
+            <a id="button" class="contrata_en_linea" href="datos-asegurado.html" style="border-style: none" ">
+               <span class="button_text1">CONTRATA EN LÍNEA</span>
+               <span class="button_text2">En solo 3 simples pasos</span>
+            </a>
+         
+            <div id="bottom_section" class="container" style="background-color:#f3f3f3;padding-top: 60px;padding-bottom: 55px;">
+               <h3 class="conoce_cob">Conoce más sobre las coberturas del</h3>
+               <h3 class="title_cob1">SEGURO DE ACCIDENTES PERSONALES</h3>
+               <div class="container">
+                  <p class="import_ud">Importante para Usted:</p>
+               </div>
+
+               <div class="container_footer_legend">
+                  <div class="col-xs-6 col-sm-6">
+                     <div class="col-xs-6 col-sm-2 escudo" ><img src="img/shield.png" width="60" style="margin-left: -30px;"></div>
+                     <div class="col-xs-6 col-sm-10 footer_sec_cont" style="font-size: 17px;">
+                        <ul>
+                           <li>Cubre por <span class="orange_bold">fallecimiento accidental</span>, <span class="black_bold">UF 180</span> o <span class="black_bold">UF 500</span> según plan contratado.</li>
+                           <li>Cubre <span class="orange_bold">fallecimiento por cualquier causa</span> y entrega <span class="black_bold">5 UF</span> para gastos funerarios.</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6">
+                     <div class="col-xs-6 col-sm-10 footer_sec_cont" style="font-size: 17px;">
+                        <ul>
+                           <li>Estas cubierto desde el momento de contratar tu seguro.</li>
+                           <li>Puedes modificar tus beneficiarios en cualquier sucursal.</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               
+               <h3 class="bottom_text">Enviaremos a tu e-mail el certificado de cobertura y a tu celular tu clave de verificación</h3>
+            </div>
+         </div>
+      </div>
+      </div>
+      <footer>
+         <div class="container">
+            <p style="text-align:center;font-size: 12px;">Seguro intermediado por BancoEstado Corredores de Seguros S.A. La compañía que asume los riesgos es MetLife Chile Seguros de Vida S.A. Las condiciones del seguro se encuentran depositadas en la SVS bajo el código POL 3 2013 0085, artículo N° 2, Letra A (Muerte Accidental). Oferta Válida para contratar hasta el 31/12/2017</p>
+            <header>
+               <div id="logo"><img src="img/logo_bancoestado_corredora.png"></div>
+            </header>
+         </div>
+      </footer>
+   </body>
+</html>

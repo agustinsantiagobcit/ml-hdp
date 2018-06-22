@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cl.metlife.hubdepagos</groupId>
+    <artifactId>HubDePagos</artifactId>
+    <version>2.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>BotonDePagoIntranetEAR</module>
+        <module>BotonDePagoIntranetWeb</module>
+        <module>BotonDePagoIntranetDomain</module>
+        <module>BotonDePagoIntranetBusiness</module>
+        <module>BotonDePagoDmzEAR</module>
+        <module>BotonDePagoDmzWeb</module>
+        <module>HubDePagosAdminWeb</module>
+        <module>HubDePagosAdminEAR</module>
+        <module>HubDePagosAdminBusiness</module>
+        <module>HubDePagosBussiness</module>
+        <module>HubDePagosDomain</module>
+        <module>HubDePagosPersistence</module>
+        <module>QRExampleWeb</module>
+        <module>QRExampleBusiness</module>
+        <module>QRExampleEAR</module>
+        <module>BECSRefactorWeb</module>
+        <module>BECSRefactorEAR</module>
+        <module>VisorDePagosBusiness</module>
+        <module>VisorDePagosEAR</module>
+        <module>VisorDePagosWeb</module>
+    </modules>
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+                <version>2.3.2</version>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    <properties>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+    </properties>
+</project>

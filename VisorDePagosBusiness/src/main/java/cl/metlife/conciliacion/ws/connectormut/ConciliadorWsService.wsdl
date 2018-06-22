@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ConciliadorWsService" targetNamespace="http://servicio.ws.metlife/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://servicio.ws.metlife/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://ws.conciliacion.hdp.metlife.cl/">
+  <import namespace="http://ws.conciliacion.hdp.metlife.cl/" location="ConectorConciliadorWSSoap.wsdl">
+    </import>
+  <binding name="ConciliadorWsPortBinding" type="ns1:ConectorConciliadorWSSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ConciliarPago">
+      <soap:operation soapAction="ConciliarPago"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ConciliadorWsService">
+    <port name="ConciliadorWsPort" binding="tns:ConciliadorWsPortBinding">
+      <soap:address location="http://mlclwmutdev01.alico.corp:9080/recaudacion/WsRecaudacion"/>
+    </port>
+  </service>
+</definitions>

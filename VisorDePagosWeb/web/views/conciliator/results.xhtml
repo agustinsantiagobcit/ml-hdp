@@ -1,0 +1,247 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="content">
+        <div class="Container100">
+            <div class="ContainerIndent">
+                <div class="Card ShadowEffect  ">
+                    <div class="Container100 Responsive100">
+                        <div class="ContainerIndent">
+                            <h2 class="BigTopic">Reporte</h2>
+
+                                <h:form id="form" prependId="false">
+                                    <p:commandButton value="Exportar para Reproceso" ajax="false" action="#{conciliadorBean.downloadExcelButtonMethod}" onclick="PrimeFaces.monitorDownload(start, stop);" icon="fa fa-download" styleClass="GreenButton" style="float: right;margin-top: -53px;" rendered="#{conciliadorBean.processedPaymentsWithErrors.size() > 0}"/>
+
+                                    <p:dataTable id="processedPayments" var="data" widgetVar="processedPaymentsVar" rows="10"
+                                                 value="#{conciliadorBean.processedPayments}" emptyMessage="No hay datos disponibles" paginator="true"
+                                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                                                 paginatorPosition="bottom" scrollable="true" resizableColumns="true" style="text-align:left;margin-bottom:20px;float:left" rendered="#{conciliadorBean.processedPayments.size() > 0}">
+
+                                        <f:facet name="header">
+                                            Pagos conciliados
+                                        </f:facet>
+
+                                        <f:facet name="{Exporters}">
+                                            <h:outputLabel value="Exportar a :" style="margin-left: 100px;"/>
+                                            <h:commandLink>
+                                                <img src="#{request.contextPath}/resources/rio-layout/images/xls.png" width="24" style="margin-bottom: -8px;"/>
+                                                <p:dataExporter type="xls" target="processedPayments" fileName="pagos" />
+                                            </h:commandLink>
+
+                                            <h:commandLink>
+                                                <img src="#{request.contextPath}/resources/rio-layout/images/csv.png" width="24" style="margin-bottom: -8px;"/>
+                                                <p:dataExporter type="csv" target="processedPayments" fileName="pagos" />
+                                            </h:commandLink>
+                                        </f:facet>
+
+                                        <p:column headerText="Fecha" width="60">
+                                            <h:outputLabel value="#{data.formattedDate}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Número de documento" width="60">
+                                            <h:outputLabel value="#{data.documentNumber}"/> <h:outputLabel value="N/D" rendered="#{data.documentNumber == null || data.documentNumber == ''}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Número de producto" width="60">
+                                            <h:outputLabel value="#{data.productNumber}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Linea de negocios" width="140">
+                                            <h:outputLabel value="#{data.businessLine.name}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Nombre Cliente" width="140">
+                                            <h:outputLabel value="#{data.customer.name}"/>
+                                        </p:column>
+
+                                        <p:column headerText="RUT" width="70">
+                                            <h:outputLabel value="#{data.customer.rut}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Mes" width="60">
+                                            <h:outputLabel value="#{data.periodMonthName}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Año" width="60">
+                                            <h:outputLabel value="#{data.periodYear}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Divisa" width="60">
+                                            <h:outputLabel value="#{data.currencyCode.code}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Monto pagado" width="60">
+                                            <h:outputLabel value="#{data.paidAmount}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Factura asociada" width="60">
+                                            <h:outputLabel value="#{data.invoiceNumber}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Resultado Conciliación" width="200">
+                                            <h:outputLabel value="#{data.status.name} "/> <h:outputLabel value="#{data.status.description}"/>
+                                        </p:column>
+
+                                    </p:dataTable>
+
+                                    <p:dataTable id="alreadyConciliated" var="data2" widgetVar="alreadyConciliatedVar" rows="10"
+                                                 value="#{conciliadorBean.processedPaymentsAlreadyConciliated}" emptyMessage="No hay datos disponibles" paginator="true"
+                                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                                                 paginatorPosition="bottom" scrollable="true" resizableColumns="true" style="text-align:left;margin-bottom:20px;float:left" rendered="#{conciliadorBean.processedPaymentsAlreadyConciliated.size() > 0}">
+
+                                        <f:facet name="header">
+                                            Pagos previamente conciliados
+                                        </f:facet>
+
+                                        <f:facet name="{Exporters}">
+                                            <h:outputLabel value="Exportar a :" style="margin-left: 100px;"/>
+                                            <h:commandLink>
+                                                <img src="#{request.contextPath}/resources/rio-layout/images/xls.png" width="24" style="margin-bottom: -8px;"/>
+                                                <p:dataExporter type="xls" target="alreadyConciliated" fileName="pagos" />
+                                            </h:commandLink>
+
+                                            <h:commandLink>
+                                                <img src="#{request.contextPath}/resources/rio-layout/images/csv.png" width="24" style="margin-bottom: -8px;"/>
+                                                <p:dataExporter type="csv" target="alreadyConciliated" fileName="pagos" />
+                                            </h:commandLink>
+                                        </f:facet>
+
+                                        <p:column headerText="Fecha" width="60">
+                                            <h:outputLabel value="#{data2.formattedDate}"/>
+                                        </p:column>
+
+
+                                        <p:column headerText="Número de documento" width="60">
+                                            <h:outputLabel value="#{data2.documentNumber}"/> <h:outputLabel value="N/D" rendered="#{data2.documentNumber == null || data2.documentNumber == ''}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Número de producto" width="60">
+                                            <h:outputLabel value="#{data2.productNumber}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Linea de negocios" width="140">
+                                            <h:outputLabel value="#{data2.businessLine.name}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Nombre Cliente" width="140">
+                                            <h:outputLabel value="#{data2.customer.name}"/>
+                                        </p:column>
+
+                                        <p:column headerText="RUT" width="70">
+                                            <h:outputLabel value="#{data2.customer.rut}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Mes" width="60">
+                                            <h:outputLabel value="#{data2.periodMonthName}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Año" width="60">
+                                            <h:outputLabel value="#{data2.periodYear}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Divisa" width="60">
+                                            <h:outputLabel value="#{data2.currencyCode.code}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Monto pagado" width="60">
+                                            <h:outputLabel value="#{data2.paidAmount}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Factura asociada" width="60">
+                                            <h:outputLabel value="#{data2.invoiceNumber}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Resultado Conciliación" width="200">
+                                            <h:outputLabel value="#{data2.status.name} "/> <h:outputLabel value="#{data.status.description}"/>
+                                        </p:column>
+
+                                    </p:dataTable>
+
+                                    <p:dataTable id="paymentsWithErrors" var="data3" widgetVar="paymentsWithErrorsVar" rows="10"
+                                                 value="#{conciliadorBean.processedPaymentsWithErrors}" emptyMessage="No hay datos disponibles" paginator="true"
+                                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+                                                 paginatorPosition="bottom" scrollable="true" resizableColumns="true" style="text-align:left;margin-bottom:20px;float:left" rendered="#{conciliadorBean.processedPaymentsWithErrors.size() > 0}">
+
+                                        <f:facet name="header">
+                                            Pagos con Errores (No Conciliados)
+                                        </f:facet>
+
+                                        <f:facet name="{Exporters}">
+                                            <h:outputLabel value="Exportar a :" style="margin-left: 100px;"/>
+                                            <h:commandLink>
+                                                <img src="#{request.contextPath}/resources/rio-layout/images/xls.png" width="24" style="margin-bottom: -8px;"/>
+                                                <p:dataExporter type="xls" target="paymentsWithErrors" fileName="pagos" />
+                                            </h:commandLink>
+
+                                            <h:commandLink>
+                                                <img src="#{request.contextPath}/resources/rio-layout/images/csv.png" width="24" style="margin-bottom: -8px;"/>
+                                                <p:dataExporter type="csv" target="paymentsWithErrors" fileName="pagos" />
+                                            </h:commandLink>
+                                        </f:facet>
+
+                                        <p:column headerText="Fecha" width="60">
+                                            <h:outputLabel value="#{data3.formattedDate}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Número de documento" width="60">
+                                            <h:outputLabel value="#{data3.documentNumber}"/> <h:outputLabel value="N/D" rendered="#{data3.documentNumber == null || data3.documentNumber == ''}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Número de producto" width="60">
+                                            <h:outputLabel value="#{data3.productNumber}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Linea de negocios" width="140">
+                                            <h:outputLabel value="#{data3.businessLine.name}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Nombre Cliente" width="140">
+                                            <h:outputLabel value="#{data3.customer.name}"/>
+                                        </p:column>
+
+                                        <p:column headerText="RUT" width="70">
+                                            <h:outputLabel value="#{data3.customer.rut}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Mes" width="60">
+                                            <h:outputLabel value="#{data3.periodMonthName}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Año" width="60">
+                                            <h:outputLabel value="#{data3.periodYear}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Divisa" width="60">
+                                            <h:outputLabel value="#{data3.currencyCode.code}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Monto pagado" width="60">
+                                            <h:outputLabel value="#{data3.paidAmount}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Factura asociada" width="60">
+                                            <h:outputLabel value="#{data3.invoiceNumber}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Resultado Conciliación" width="200">
+                                            <h:outputLabel value="#{data3.status.name} "/> <h:outputLabel value="#{data3.status.description}"/>
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </h:form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </ui:define>
+
+</ui:composition>

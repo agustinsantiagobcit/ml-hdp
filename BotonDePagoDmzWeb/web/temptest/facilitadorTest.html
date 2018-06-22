@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Facilitador de comercio</h1>
+    <h2>GetToken</h2>
+    <!-- https://www.pagoautomaticocontarjetas.cl/nuevopat/SolicitaTkn -->
+    <!-- http://198.22.250.9:8890/facilitador/token/SolicitaTkn -->
+    <p>
+        <form name="GETTOKEN" ACTION="https://www.pagoautomaticocontarjetas.cl/nuevopat/SolicitaTknComercio"  method="POST">
+            <input type="text" name="TBKPatData"
+
+                    value="<TBKPatData><Perfil><NombreUsuario>METLIFE</NombreUsuario><ContrasenaUsuario>metlife1hdp</ContrasenaUsuario><RutUsuario>99289000-2</RutUsuario></Perfil><DuracionToken>1800</DuracionToken><DatosComercio><CodigoComercio>27464661</CodigoComercio><DataAuditoriaComercio>000001</DataAuditoriaComercio></DatosComercio><DatosServicios><IdServicio>0000001</IdServicio></DatosServicios><IP>64.76.152.3</IP></TBKPatData>">
+
+            <input type=submit value="Solicita Token">
+        </form>
+    </p>
+
+    <h2>Redirección</h2>
+    <form name="PostFacilitador" ACTION="https://www.pagoautomaticocontarjetas.cl/nuevopat/tokenComercioLogin"  method="POST">
+        Token: <input type="text" name="token" value="TOKEN"><br/>
+        Regreso OK: <input type="text" name="direccionRegreso" value="http://www.google.com/"><br/>
+        Regreso Fail: <input type="text" name="direccionError" value="http://www.nooooooooooooooo.com/"><br/>
+
+        <input type=submit value="Redirigir Facilitador">
+    </form>
+
+    <br/><br/><br/>
+    <hr>
+
+    <h1>Register PatPass</h1>
+    <form name="tokenForm" ACTION="http://198.22.250.9:8890/facilitador/token.do" method="POST">
+        <input type="text" name="token" value="123456789123456789">
+        <input type="text" name="direccionRegreso" value="http://www.transbank.cl">
+        <input type="text" name="direccionError" value="http://www.transbank.cl">
+        <input type=submit value="Redireccionar Browser">
+
+    </form>
+
+
+
+
+</body>
+</html>

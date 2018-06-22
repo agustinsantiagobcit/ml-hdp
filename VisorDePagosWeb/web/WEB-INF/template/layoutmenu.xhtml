@@ -1,0 +1,34 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pr="http://primefaces.org/rio">
+
+    <div class="Animated05" id="layout-menu-cover">
+        <ul class="layout-menu">
+            <li>
+                <a class="menulink ripplelink">
+                    <i class="icon-round58 Fs40"></i>
+                    <span class="Fs18">#{authenticationBean.loggedUser.username}<i class="icon-downwards Fright Fs20"></i><br /><span class="Fs12 FontRobotoLight">#{authenticationBean.loggedUser.name}</span></span>
+                </a>
+            </li>
+        </ul>
+        <div class="Separator"></div>
+
+        <h:form id="menuForm">
+            <pr:menu>
+                <p:menuitem id="pagos" value="Pagos" icon="fa fa-credit-card" outcome="/views/payments.xhtml" rendered="#{authenticationBean.isAuthorizedByViewId(1)}"/>
+                <p:menuitem id="items_conciliados" value="Items Conciliados" icon="fa fa-credit-card" outcome="/views/conciliated/payments.xhtml" rendered="#{authenticationBean.isAuthorizedByViewId(1)}"/>
+                <p:menuitem id="pagos_conciliados" value="Pagos Conciliados" icon="fa fa-credit-card" outcome="/views/conciliated/pagos.xhtml" rendered="#{authenticationBean.isAuthorizedByViewId(1)}"/>
+                <p:menuitem id="conciliacion" value="Conciliación" icon="fa fa-random" outcome="/views/conciliator/make.xhtml" rendered="#{authenticationBean.isAuthorizedByViewId(2)}"/>
+                <p:menuitem id="grafico" value="Gráfico" icon="fa fa-bar-chart" outcome="/views/graphs/search.xhtml" rendered="#{authenticationBean.isAuthorizedByViewId(3)}"/>
+                <p:menuitem id="logout" value="Salir" icon="fa fa-power-off" action="#{authenticationBean.logout}"/>
+                <p:separator />
+            </pr:menu>
+        </h:form>
+
+    </div>
+
+</ui:composition>

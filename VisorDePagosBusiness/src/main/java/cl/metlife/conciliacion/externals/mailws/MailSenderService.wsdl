@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MailSenderService" targetNamespace="http://mailSender.metlife.cl/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://mailSender.metlife.cl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://mailSender.metlife.cl/" schemaLocation="MailSenderService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="sendMailResponse">
+    <part name="parameters" element="tns:sendMailResponse">
+    </part>
+  </message>
+  <message name="sendMail">
+    <part name="parameters" element="tns:sendMail">
+    </part>
+  </message>
+  <message name="getStatusResponse">
+    <part name="parameters" element="tns:getStatusResponse">
+    </part>
+  </message>
+  <message name="getStatus">
+    <part name="parameters" element="tns:getStatus">
+    </part>
+  </message>
+  <portType name="MailSender">
+    <operation name="getStatus">
+      <input message="tns:getStatus" wsam:Action="urn:getStatus">
+    </input>
+      <output message="tns:getStatusResponse" wsam:Action="http://mailSender.metlife.cl/MailSender/getStatusResponse">
+    </output>
+    </operation>
+    <operation name="sendMail">
+      <input message="tns:sendMail" wsam:Action="urn:sendMail">
+    </input>
+      <output message="tns:sendMailResponse" wsam:Action="http://mailSender.metlife.cl/MailSender/sendMailResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="MailSenderPortBinding" type="tns:MailSender">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getStatus">
+      <soap:operation soapAction="urn:getStatus"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="sendMail">
+      <soap:operation soapAction="urn:sendMail"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="MailSenderService">
+    <port name="MailSenderPort" binding="tns:MailSenderPortBinding">
+      <soap:address location="http://mlfsoaprd01:9080/MailWS/MailSenderService"/>
+    </port>
+  </service>
+</definitions>

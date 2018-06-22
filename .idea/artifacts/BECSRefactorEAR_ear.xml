@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="BECSRefactorEAR:ear">
+    <output-path>$PROJECT_DIR$/BECSRefactorEAR/target</output-path>
+    <root id="archive" name="BECSRefactorEAR-1.0.ear">
+      <element id="artifact" artifact-name="BECSRefactorEAR:ear exploded" />
+    </root>
+  </artifact>
+</component>

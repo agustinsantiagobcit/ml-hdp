@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Paga tu seguro</title>
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body styleClass="loginbodyblue">
+
+        <h:form id="form">
+
+            <div id="wrapper">
+                <header id="header" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+                    <div class="container">
+                        <h1><a href="http://www.metlife.cl" title="Metlife"><img src="imagenes/logo.png" alt="Metlife" class="img-responsive" /></a></h1>
+                    </div>
+                </header>
+                <div class="cont-site col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix" style="background-color:#f2f2f2">
+                    <div id="content" class="clearfix container">
+                        <h3>Estás contratando</h3>
+
+                        <div class="content-parsys parsys">
+                            <div class="product-card-tile abstract-product-card double single base parbase section xk-component xk-section-base" data-xk-section="v1">
+                                <div class="container" data-comp-spacing="product-card-tile">
+                                    <div class="row wrapper in_view">
+                                        <div class="product-card">
+                                            <div class="image_banner"/>
+
+                                            <div class="content">
+                                                <div class="content-body">
+                                                    <span class="intro">Seguro Protección Accidental Básico</span>
+
+                                                    <div class="details">
+                                                        <span class="detail">Un seguro de protección accidental básico que protege en caso
+de invalidez o fallecimiento.</span>
+                                                    </div>
+
+                                                    <div class="details" style="margin-top:45px !important">
+                                                        <span class="insurance_data_header">Datos del asegurado</span>
+                                                        <span class="detail">Nombre Asegurado: #{exampleBean.nombre}</span>
+                                                        <span class="detail">Rut Asegurado: 11.111.111-1</span>
+                                                        <span class="detail">Monto a pagar: $ 10.990</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="content2" style="float:left">
+                                                <div class="content-body text-center">
+                                                    <p:barcode value="#{exampleBean.qrUrl}" type="qr" height="200" style="margin-top: 36px;border: 1px solid #f2f2f2;"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer>
+                            <div class="footer-text-box">
+                                <p>Los datos e información contenido corresponde a aquella proporcionada por el cliente contratante al
+                                    momento de la contratación del seguro y otorgamiento del crédito según corresponda. El cliente será responsable de comunicar
+                                    a la Compañía Aseguradora cualquier modificación de sus datos personales, información de contacto u otro.</p>
+                            </div>
+
+                            <div class="main-footer">
+                                <div class="img_left">
+                                    <a href="http://www.metlife.cl" title="Metlife"><img src="imagenes/logo.png" alt="Metlife" class="logo-footer" width="120" /></a>
+                                </div>
+                                <div class="lists_center">
+                                    <ul>
+                                        <li><a href="#">Información Corporativa</a> </li>
+                                        <li><span class="bullet">•</span><a href="#">Política de Privacidad</a></li>
+                                        <li><span class="bullet">•</span><a href="#">Circular Nº 2131</a></li>
+                                        <li class="footer_copyright">2017 Metlife Chile, Agustinas 640, Santiago, Chile</li>
+                                    </ul>
+
+                                </div>
+
+                                <div class="socials_right">
+                                    <p>Síguenos</p>
+                                    <img src="logos/socials1.png" alt="Facebook" />
+                                    <img src="logos/socials2.png" alt="Facebook" />
+                                </div>
+                            </div>
+                        </footer>
+                        <!--  %@include file="Footer.jsp" %>-->
+
+                </div>
+
+                <footer class="clearfix">
+                    <div class="container clearfix">
+
+                    </div>
+                </footer>
+            </div>
+            </div>
+
+        </h:form>
+
+        <link href='css2/cssOpenSans.css' rel='stylesheet' type='text/css' />
+        <link rel="stylesheet" href="css2/bootstrap.css" />
+        <link href="css2/style1.css" rel="stylesheet" media="screen" />
+        <link href="css2/jquery-ui.css" rel="stylesheet" media="screen" />
+        <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" href="<%=basePath%>css2/iefix.css" />
+        <script src="<%=basePath%>js/html5shiv.js"></script>
+        <![endif]-->
+    </h:body>
+
+</html>

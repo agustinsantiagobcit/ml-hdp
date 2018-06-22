@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="HubDePagosAdminEAR:ear">
+    <output-path>$PROJECT_DIR$/HubDePagosAdminEAR/target</output-path>
+    <root id="archive" name="HubDePagosAdminEAR-1.0.ear">
+      <element id="artifact" artifact-name="HubDePagosAdminEAR:ear exploded" />
+    </root>
+  </artifact>
+</component>

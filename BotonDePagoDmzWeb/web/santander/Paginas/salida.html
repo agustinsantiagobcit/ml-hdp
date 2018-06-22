@@ -1,0 +1,69 @@
+Esta es la p�gina encargada de recibir el mensaje MPFIN de salida
+y validar que el pago (notificaci�n fue realizado).
+Una vez verificado el pago en la base de datos del comercio se muestra 
+el comprobante comercio al cliente.
+En caso de no encontrarse el pago, se debe indicar al cliente que la
+notificaci�n del pago aun no ha llegado y que intente mas tarde recuperar
+su comprobante.
+Est� p�gina puede ser desarrollado php, asp, java o cualquier lenguaje.
+
+EJEMPLO DE ESTRUCTURA 
+
+<%
+REM*************************************************************************
+REM Pagina:	Salida.ASP
+REM Objetivo:	Permite la muestra de un comprobante local en el comercio. 
+REM*************************************************************************
+
+response.ContentType = "text/plain"
+
+'Ejemplo formato:<MPOUT><CODRET>0000</CODRET><DESCRET>Transaccion%20OK</DESCRET><IDCOM>9951487002</IDCOM><IDTRX>9951487002000001</IDTRX><TOTAL>186100</TOTAL><NROPAGOS>2</NROPAGOS><FECHATRX>20031215130759</FECHATRX><FECHACONT>20031216</FECHACONT><NUMCOMP>0011223344</NUMCOMP></MPOUT>
+
+'esto ciclo es bueno incorporarlo tamb�en en la notificaci�n 
+' de esta manera si cambia el metodo de invocaci�n no ocurrira 
+'ning�n problema.
+sMethod = UCase(Request.ServerVariables("REQUEST_METHOD"))
+if sMethod = "GET" Then
+    lstrXML = Request.ServerVariables("QUERY_STRING")
+ElseIf sMethod = "POST" Then
+    lstrXML = Request.form
+End If
+
+
+'Crea el Dom XML
+On Error Resume Next
+Set objXML = Server.CreateObject("Microsoft.XMLDOM")
+objXML.loadXml(lstrXML)
+'Parsea el xml
+if (objXML.parseError.errorCode <> 0) then
+   ' aqui existe un error de parseo
+   response.write "<NOTIFICA>NOK</NOTIFICA>"
+   response.end
+end if  
+
+'Busca todos los elemento con la etiqueta MPOUT
+set Element=objXML.getElementsByTagName("MPFIN")
+'Busco la etiqueta CODRET
+Codret=Element.item(0).selectNodes("CODRET").ITEM(0).text
+
+
+if Codret<>"0000" then
+   'ocurrio un error en el banco y no hubo pago
+   'Mensaje comercio "Estamos en espera decla confirmaci�n del banco"
+   response.write "<NOTIFICA>NOK</NOTIFICA>"
+   response.end
+endif
+'Busca todos los tags necesarios para la actualizaci�n del estado en la base
+IdeTrx=Element.item(0).selectNodes("IDTRX").ITEM(0).text
+   
+'Codigo de verificaci�n para muestra de comprobante local
+'Si error then
+	'response.write "<NOTIFICA>NOK</NOTIFICA>"
+'fin
+
+response.write "<NOTIFICA>OK</NOTIFICA>"	   	
+
+'Anulo el cl.metlife.hdp.botonpago.kitservipag.objeto
+set objXML=nothing
+
+%>
